@@ -10,6 +10,7 @@ import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import NavBar from './components/NavBar';
+import CheckBox from './components/CheckBox';
 
 // Step 0: understand what each part of the code is doing
 // Step 1: Change from js to react code
@@ -45,7 +46,7 @@ export function SetupButtons() {
 
 export function ProcAndPlay() {
     if (globalEditor != null && globalEditor.repl.state.started == true) {
-        console.log(globalEditor)
+        console.log("her", globalEditor)
         Proc()
         globalEditor.evaluate();
     }
@@ -53,6 +54,7 @@ export function ProcAndPlay() {
 
 export function Proc() {
 
+    console.log(document.getElementById('proc'))
     let proc_text = document.getElementById('proc').value
     let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
     ProcessText(proc_text);
@@ -119,7 +121,7 @@ let buttonList = [
     buttonName: "Preprocess",
     buttonType: "button",
     buttonCols: "6",
-    callBack: "preProcess"
+    callBack: "Proc()"
   },
   {
     buttonId: "process_play",
@@ -133,14 +135,14 @@ let buttonList = [
     buttonName: "Play",
     buttonType: "button",
     buttonCols: "6",
-    callBack: "playButton"
+    callBack: "globalEditor.evaluate()"
   },
   {
     buttonId: "stop",
     buttonName: "Stop",
     buttonType: "button",
     buttonCols: "6",
-    callBack: "stopButton"
+    callBack: "globalEditor.stop()"
   },
 ];
 
@@ -166,6 +168,7 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
+                        <CheckBox checked="true" buttonValue="flexRadioDefault" buttonId="flexRadioDefault1" buttonName="p1: ON" callBack="ProcAndPlay"/>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
                             <label className="form-check-label" htmlFor="flexRadioDefault1">
@@ -185,6 +188,16 @@ return (
         </main >
     </div >
 );
+
+      //   className="mb-2"
+      //   id="toggle-check"
+      //   type="checkbox"
+      //   variant="outline-primary"
+      //   checked={checked}
+      //   value={props.value}
+      //   onChange={(e) => setChecked(e.currentTarget.checked)}
+      // >
+      //   {props.buttonName}
 
 
 }
