@@ -9,6 +9,14 @@ import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/w
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
+import NavBar from './components/NavBar';
+
+// Step 0: understand what each part of the code is doing
+// Step 1: Change from js to react code
+// Step 2: Move code into seperate files
+// Step 3: Change the song
+// Step 4: Add more button functionality
+// Step 5: Change the look of the UI/ UX
 
 let globalEditor = null;
 
@@ -18,19 +26,19 @@ const handleD3Data = (event) => {
 
 export function SetupButtons() {
 
-    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-    document.getElementById('process').addEventListener('click', () => {
-        Proc()
-    }
-    )
-    document.getElementById('process_play').addEventListener('click', () => {
-        if (globalEditor != null) {
-            Proc()
-            globalEditor.evaluate()
-        }
-    }
-    )
+    // document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
+    // document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
+    // document.getElementById('process').addEventListener('click', () => {
+    //     Proc()
+    // }
+    // )
+    // document.getElementById('process_play').addEventListener('click', () => {
+    //     if (globalEditor != null) {
+    //         Proc()
+    //         globalEditor.evaluate()
+    //     }
+    // }
+    // )
 }
 
 
@@ -105,7 +113,38 @@ useEffect(() => {
 
 }, []);
 
+let buttonList = [
+  {
+    buttonId: "process",
+    buttonName: "Preprocess",
+    buttonType: "button",
+    buttonCols: "6",
+    callBack: "preProcess"
+  },
+  {
+    buttonId: "process_play",
+    buttonName: "Proc & Play",
+    buttonType: "button",
+    buttonCols: "6",
+    callBack: "procPlay"
+  },
+  {
+    buttonId: "play",
+    buttonName: "Play",
+    buttonType: "button",
+    buttonCols: "6",
+    callBack: "playButton"
+  },
+  {
+    buttonId: "stop",
+    buttonName: "Stop",
+    buttonType: "button",
+    buttonCols: "6",
+    callBack: "stopButton"
+  },
+];
 
+console.log("here")                    
 return (
     <div>
         <h2>Strudel Demo</h2>
@@ -118,14 +157,7 @@ return (
                         <textarea className="form-control" rows="15" id="proc" ></textarea>
                     </div>
                     <div className="col-md-4">
-
-                        <nav>
-                            <button id="process" className="btn btn-outline-primary">Preprocess</button>
-                            <button id="process_play" className="btn btn-outline-primary">Proc & Play</button>
-                            <br />
-                            <button id="play" className="btn btn-outline-primary">Play</button>
-                            <button id="stop" className="btn btn-outline-primary">Stop</button>
-                        </nav>
+                        <NavBar rowGap="3" buttonList={buttonList}/>
                     </div>
                 </div>
                 <div className="row">
