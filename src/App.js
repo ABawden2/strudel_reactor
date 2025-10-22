@@ -10,16 +10,10 @@ import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import NavBar from './components/NavBar';
-import CheckBox from './components/CheckBox';
 import buttonList from './assets/buttonList.json';
+import padElements from './assets/padElements.json';
 import DjPad from './components/DjPad';
 
-// Step 0: understand what each part of the code is doing
-// Step 1: Change from js to react code
-// Step 2: Move code into seperate files
-// Step 3: Change the song
-// Step 4: Add more button functionality
-// Step 5: Change the look of the UI/ UX
 
 let globalEditor = null;
 
@@ -60,13 +54,14 @@ export function Proc() {
     let proc_text = document.getElementById('proc').value
     let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
     ProcessText(proc_text);
+    console.log("here", proc_text_replaced)
     globalEditor.setCode(proc_text_replaced)
 }
 
 export function ProcessText(match, ...args) {
 
     let replace = ""
-    if (document.getElementById('flexRadioDefault2').checked) {
+    if (document.getElementById('flexRadioDefault1').checked) {
         replace = "_"
     }
 
@@ -118,27 +113,46 @@ useEffect(() => {
 
 }, []);
 
-let thing = [
-  {
-    checked: "false",
-    buttonValue: "flexRadioDefault", 
-    buttonId: "flexRadioDefault1",
-    buttonName: "p1: ON",
-    buttonCols: "4",
-    buttonColour: "flat",
-    callBack: "ProcAndPlay"
-  },
-    {
-    checked: "false",
-    buttonValue: "flexRadioDefault", 
-    buttonId: "flexRadioDefault2",
-    buttonName: "p1: HUSH",
-    buttonCols: "4",
-    buttonColour: "flat",
-    callBack: "ProcAndPlay"
-  }
-]
+// let thing = [
+//   // If not selected button is on/ element is playing
+//   {
+//     checked: "false",
+//     buttonValue: "flexRadioDefault", 
+//     buttonId: "flexRadioDefault1",
+//     buttonName: "p1: Hush",
+//     buttonCols: "4",
+//     buttonColour: "outline-primary",
+//     callBack: ""
+//   }
+// ]
 
+
+let patternOptions = [
+  {
+    buttonValue: "1", 
+    buttonId: "patternOptions1",
+    buttonName: "1",
+    buttonGroupName: "patternOptions",
+    buttonColour: "outline-primary",
+    callBack: ""
+  },
+  {
+    buttonValue: "2", 
+    buttonId: "patternOptions2",
+    buttonName: "2",
+    buttonGroupName: "patternOptions",
+    buttonColour: "outline-primary",
+    callBack: ""
+  },
+  {
+    buttonValue: "3", 
+    buttonId: "patternOptions3",
+    buttonName: "3",
+    buttonGroupName: "patternOptions",
+    buttonColour: "outline-primary",
+    callBack: ""
+  },
+]
 
 return (
     <div>
@@ -161,7 +175,7 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <DjPad rowGap="2" checkBoxList={thing}/>
+                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions}/>
                         {/* <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
                             <label className="form-check-label" htmlFor="flexRadioDefault1">
