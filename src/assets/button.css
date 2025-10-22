@@ -1,0 +1,57 @@
+.btn-flat {
+    background-color: rgb(201, 106, 201) !important;
+    border: none !important;
+    border-radius: 2px !important;
+    color: black;
+}
+
+/* .btn-flat.active {
+    background-color: rgb(182, 201, 106) !important;
+    border: none !important;
+    border-radius: 2px !important;
+    color: black;
+} */
+
+/* Checked State (The Fix) */
+.btn.btn-flat:active {
+    background-color: #5cb85c !important; 
+    border-color: #5cb85c !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+
+/* Checked State (The Fix) */
+.btn.btn-flat:active:hover {
+    background-color: #5cb85c !important; 
+    border-color: #5cb85c !important;
+    color: white !important;
+    box-shadow: none !important;
+}
+
+.btn-flat:hover {
+    background-color: rgb(201, 111, 106) !important;
+    border: none !important;
+    border-radius: 2px;
+    box-shadow:0 3px 3px 0 #666;
+    color: black;
+}
+
+/* .btn-flat:active,
+.btn-flat:focus {
+    background-color: rgb(155, 75, 155) !important;
+    border: none !important;
+    border-radius: 2px;
+    box-shadow: 0 3px 3px 0 #666;
+    color: black;
+    transform: translateY(1px);
+} */
+
+/* .btn-flat:checked
+.btn-flat:active {
+    background-color: rgb(43, 139, 126) !important;
+    border: none !important;
+    border-radius: 2px;
+    box-shadow: 0 3px 3px 0 #666;
+    color: black;
+    transform: translateY(1px);
+} */

@@ -11,6 +11,8 @@ import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import NavBar from './components/NavBar';
 import CheckBox from './components/CheckBox';
+import buttonList from './assets/buttonList.json';
+import DjPad from './components/DjPad';
 
 // Step 0: understand what each part of the code is doing
 // Step 1: Change from js to react code
@@ -45,7 +47,7 @@ export function SetupButtons() {
 
 
 export function ProcAndPlay() {
-    if (globalEditor != null && globalEditor.repl.state.started == true) {
+    if (globalEditor != null && globalEditor.repl.state.started === true) {
         console.log("her", globalEditor)
         Proc()
         globalEditor.evaluate();
@@ -78,6 +80,7 @@ const hasRun = useRef(false);
 useEffect(() => {
 
     if (!hasRun.current) {
+      console.log(handleD3Data)
         document.addEventListener("d3Data", handleD3Data);
         console_monkey_patch();
         hasRun.current = true;
@@ -115,38 +118,28 @@ useEffect(() => {
 
 }, []);
 
-let buttonList = [
+let thing = [
   {
-    buttonId: "process",
-    buttonName: "Preprocess",
-    buttonType: "button",
-    buttonCols: "6",
-    callBack: "Proc()"
+    checked: "false",
+    buttonValue: "flexRadioDefault", 
+    buttonId: "flexRadioDefault1",
+    buttonName: "p1: ON",
+    buttonCols: "4",
+    buttonColour: "flat",
+    callBack: "ProcAndPlay"
   },
-  {
-    buttonId: "process_play",
-    buttonName: "Proc & Play",
-    buttonType: "button",
-    buttonCols: "6",
-    callBack: "procPlay"
-  },
-  {
-    buttonId: "play",
-    buttonName: "Play",
-    buttonType: "button",
-    buttonCols: "6",
-    callBack: "globalEditor.evaluate()"
-  },
-  {
-    buttonId: "stop",
-    buttonName: "Stop",
-    buttonType: "button",
-    buttonCols: "6",
-    callBack: "globalEditor.stop()"
-  },
-];
+    {
+    checked: "false",
+    buttonValue: "flexRadioDefault", 
+    buttonId: "flexRadioDefault2",
+    buttonName: "p1: HUSH",
+    buttonCols: "4",
+    buttonColour: "flat",
+    callBack: "ProcAndPlay"
+  }
+]
 
-console.log("here")                    
+
 return (
     <div>
         <h2>Strudel Demo</h2>
@@ -168,19 +161,20 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <CheckBox checked="true" buttonValue="flexRadioDefault" buttonId="flexRadioDefault1" buttonName="p1: ON" callBack="ProcAndPlay"/>
-                        <div className="form-check">
+                        <DjPad rowGap="2" checkBoxList={thing}/>
+                        {/* <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
                             <label className="form-check-label" htmlFor="flexRadioDefault1">
                                 p1: ON
                             </label>
-                        </div>
-                        <div className="form-check">
+                        </div> */}
+                        {/* <DjPad checked="true" buttonValue="flexRadioDefault" buttonId="flexRadioDefault2" buttonName="p1: HUSH" callBack="ProcAndPlay"/> */}
+                        {/* <div className="form-check">
                             <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={ProcAndPlay} />
                             <label className="form-check-label" htmlFor="flexRadioDefault2">
                                 p1: HUSH
                             </label>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

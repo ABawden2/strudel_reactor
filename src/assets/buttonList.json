@@ -1,0 +1,30 @@
+ [
+  {
+    "buttonId": "process",
+    "buttonName": "Preprocess",
+    "buttonType": "button",
+    "buttonCols": "6",
+    "callBack": "Proc()"
+  },
+  {
+    "buttonId": "process_play",
+    "buttonName": "Proc & Play",
+    "buttonType": "button",
+    "buttonCols": "6",
+    "callBack": "procPlay"
+  },
+  {
+    "buttonId": "play",
+    "buttonName": "Play",
+    "buttonType": "button",
+    "buttonCols": "6",
+    "callBack": "globalEditor.evaluate()"
+  },
+  {
+    "buttonId": "stop",
+    "buttonName": "Stop",
+    "buttonType": "button",
+    "buttonCols": "6",
+    "callBack": "globalEditor.stop()"
+  }
+]
