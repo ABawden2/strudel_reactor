@@ -7,14 +7,10 @@ import '../assets/button.css';
 function CheckBox(props) {
   const [checked, setChecked] = useState(false);
 
-      // <Button variant="flat" size="xxl">
-      //   flat button
-      // </Button>
-  console.log(props.buttonColour)
   return (
      <Col xs={12} md={props.buttonCols} lg={props.buttonCols}>
       <ToggleButton
-        className={"mb-2 btn-" + props.buttonColour}
+        className="mb-2"
         id={props.buttonId}
         type="checkbox"
         variant={props.buttonColour}
