@@ -18,8 +18,12 @@ function CheckBox(props) {
         value={props.buttonValue}
         style={{ width: 100 + '%' }}
         onChange={(e) =>  {
-          setChecked(e.currentTarget.checked)
-          console.log("checked: ", checked)
+          setChecked(e.currentTarget.checked);
+          // Determine if the value is hushed or not.
+          let value = e.currentTarget.checked ? props.buttonValue : props.buttonName;
+          // Replace the proc string
+          let proc_text_replaced = document.getElementById('proc').value.replaceAll(props.buttonName, value);
+          console.log(proc_text_replaced)
           // props.callBack
         }}
       >

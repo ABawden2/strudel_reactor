@@ -22,10 +22,10 @@ function DjPad(props) {
                 buttonName: element,
                 buttonCols: "4",
                 buttonColour: "outline-primary",
-                callBack: ""
+                callBack: props.Proc
             });
             });
-            console.log(transformedElements)
+            // console.log(transformedElements)
             setState(transformedElements);
         }
     }, [])
@@ -50,7 +50,7 @@ function DjPad(props) {
                 )})}
             </ButtonGroup>
         </Row>
-        <Row className={'g-' + props.rowGap}>
+        <Row className={'mt-4 g-' + props.rowGap}>
         {Object.values(checkBoxList).map((button) => {
             return (
             <CheckBox

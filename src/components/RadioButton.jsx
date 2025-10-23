@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 
 function RadioButton(props) {
-  const [radioValue, setRadioValue] = useState('1');
+  const [radioValue, setRadioValue] = useState('0');
 
   return (
       <ToggleButton
@@ -13,9 +13,8 @@ function RadioButton(props) {
         variant={props.buttonColour}
         value={props.buttonValue}
         checked={radioValue === props.buttonValue}
-        onChange={(e) =>  {
-          setRadioValue(e.currentTarget.value)
-        }}
+        onChange={(e) => {
+            setRadioValue(e.currentTarget.value)}}
       >
         {props.buttonName}
       </ToggleButton>
