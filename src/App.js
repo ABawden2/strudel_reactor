@@ -14,6 +14,7 @@ import buttonList from './assets/buttonList.json';
 import padElements from './assets/padElements.json';
 import DjPad from './components/DjPad';
 import ProcessTextarea from './components/ProcessTextarea';
+import patternOptions from './assets/patternOptions.json';
 
 let globalEditor = null;
 
@@ -73,9 +74,9 @@ export function ProcessText(match, ...args) {
 
     // console.log("jere ", document.getElementById('flexRadioDefault1'))
     let replace = ""
-    if (document.getElementById('flexRadioDefault1').checked) {
-        replace = "_"
-    }
+    // if (document.getElementById('flexRadioDefault1').checked) {
+    //     replace = "_"
+    // }
 
     return replace
 }
@@ -125,46 +126,6 @@ useEffect(() => {
 
 }, []);
 
-// let thing = [
-//   // If not selected button is on/ element is playing
-//   {
-//     checked: "false",
-//     buttonValue: "flexRadioDefault", 
-//     buttonId: "flexRadioDefault1",
-//     buttonName: "p1: Hush",
-//     buttonCols: "4",
-//     buttonColour: "outline-primary",
-//     callBack: ""
-//   }
-// ]
-
-
-let patternOptions = [
-  {
-    buttonValue: "1", 
-    buttonId: "patternOptions1",
-    buttonName: "1",
-    buttonGroupName: "patternOptions",
-    buttonColour: "outline-primary",
-    callBack: ""
-  },
-  {
-    buttonValue: "2", 
-    buttonId: "patternOptions2",
-    buttonName: "2",
-    buttonGroupName: "patternOptions",
-    buttonColour: "outline-primary",
-    callBack: ""
-  },
-  {
-    buttonValue: "3", 
-    buttonId: "patternOptions3",
-    buttonName: "3",
-    buttonGroupName: "patternOptions",
-    buttonColour: "outline-primary",
-    callBack: ""
-  },
-]
 
 return (
     <div>

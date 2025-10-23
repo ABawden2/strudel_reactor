@@ -1,11 +1,2 @@
 [
-  {
-    "checked": "false",
-    "buttonValue": "flexRadioDefault", 
-    "buttonId": "flexRadioDefault1",
-    "buttonName": "p1: Hush",
-    "buttonCols": "4",
-    "buttonColour": "outline-primary",
-    "callBack": ""
-  }
 ]
