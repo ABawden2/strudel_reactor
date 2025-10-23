@@ -1,0 +1,26 @@
+[
+  {
+    "buttonValue": "0", 
+    "buttonId": "patternOptions",
+    "buttonName": "1",
+    "buttonGroupName": "patternOptions",
+    "buttonColour": "outline-primary",
+    "callBack": ""
+  },
+  {
+    "buttonValue": "1", 
+    "buttonId": "patternOptions2",
+    "buttonName": "2",
+    "buttonGroupName": "patternOptions",
+    "buttonColour": "outline-primary",
+    "callBack": ""
+  },
+  {
+    "buttonValue": "2", 
+    "buttonId": "patternOptions3",
+    "buttonName": "3",
+    "buttonGroupName": "patternOptions",
+    "buttonColour": "outline-primary",
+    "callBack": ""
+  }
+]
