@@ -15,6 +15,7 @@ import padElements from './assets/padElements.json';
 import DjPad from './components/DjPad';
 import ProcessTextarea from './components/ProcessTextarea';
 import patternOptions from './assets/patternOptions.json';
+import Range from './components/Range';
 
 let globalEditor = null;
 
@@ -51,13 +52,25 @@ export function ProcAndPlay() {
 
 export function Proc() {
 
-    // console.log("proc: ", document.getElementById('proc').value)
+    console.log("noteir: ", document.getElementById('control-bassline:'))
     let proc_text = document.getElementById('proc').value
-    // console.log(document.getElementById('proc'))
     console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
     let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
+
+    let slider = document.getElementById('sliderId');
+    proc_text_replaced = proc_text_replaced.replace(proc_text.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g)), `setcps(${slider.value}/60/4)`)
+
+    let patternOptions = document.querySelectorAll('[name="patternOptions"]')
+    patternOptions.forEach((patternOption) => {
+      if (patternOption.checked) {
+        console.log(patternOption)
+        proc_text_replaced = proc_text_replaced.replace('pattern = 0', `pattern = ${patternOption.value}`)
+      }
+    })
+    // proc_text_replaced = proc_text_replaced.replace('pattern = 0', 'pattern = 1')
+
     // console.log(proc_text_replaced)
-    ProcessText(proc_text);
+    // ProcessText(proc_text);
     // console.log("here i am: ", proc_text_replaced)
     globalEditor.setCode(proc_text_replaced)
 }
@@ -127,6 +140,8 @@ useEffect(() => {
 }, []);
 
 
+// TODO: somehow allow for speed to change.
+// .lpf controls the volume of main arf and base
 return (
     <div>
         <h2>Strudel Demo</h2>
@@ -135,19 +150,21 @@ return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <ProcessTextarea />
-                    </div>
-                    <div className="col-md-4">
-                        <NavBar rowGap="3" buttonList={buttonList}/>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions}/>
+                        <NavBar rowGap="3" buttonList={buttonList}/>
+                        <Range />
+                    </div>
+                </div>
+                <div className="row">
+                    {/* When graph comes in hide this element using the attribute hidden or something else. */}
+                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <ProcessTextarea />
+                    </div>
+                    <div className="col-md-4">
+                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions} editor={null}/>
                     </div>
                 </div>
             </div>

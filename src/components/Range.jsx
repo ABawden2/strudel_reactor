@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
 function Range() {
-    const [sliderValue, setSliderValue] = useState(10);
+    const [sliderValue, setSliderValue] = useState(100);
 
     const handleSliderChange = (e) => {
         setSliderValue(e.target.value);
@@ -10,15 +10,15 @@ function Range() {
 
   return (
     <>
-      <Form.Label>Volume</Form.Label>
+      <Form.Label>Play Speed: {sliderValue}</Form.Label>
       <Form.Range 
+        id="sliderId"
         value={sliderValue}
-        min={0}
-        max={20}
-        step={1}
+        min={50}
+        max={170}
+        step={10}
         onChange={handleSliderChange}
         className="custom-slider"/>
-        <p>Selected Value: {sliderValue}</p>
     </>
   );
 }
