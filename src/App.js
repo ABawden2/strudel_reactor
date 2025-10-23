@@ -17,86 +17,123 @@ import ProcessTextarea from './components/ProcessTextarea';
 import patternOptions from './assets/patternOptions.json';
 import Range from './components/Range';
 
-let globalEditor = null;
 
 const handleD3Data = (event) => {
     console.log(event.detail);
 };
 
-export function SetupButtons() {
-
-    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-    document.getElementById('process').addEventListener('click', () => {
-        Proc()
-    }
-    )
-    document.getElementById('process_play').addEventListener('click', () => {
-        if (globalEditor != null) {
-            Proc()
-            globalEditor.evaluate()
-        }
-    }
-    )
-}
-
-
-
-export function ProcAndPlay() {
-    if (globalEditor != null && globalEditor.repl.state.started === true) {
-        console.log("her", globalEditor)
-        Proc()
-        globalEditor.evaluate();
-    }
-}
-
-export function Proc() {
-
-    console.log("noteir: ", document.getElementById('control-bassline:'))
-    let proc_text = document.getElementById('proc').value
-    console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
-    let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
-
-    let slider = document.getElementById('sliderId');
-    proc_text_replaced = proc_text_replaced.replace(proc_text.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g)), `setcps(${slider.value}/60/4)`)
-
-    let patternOptions = document.querySelectorAll('[name="patternOptions"]')
-    patternOptions.forEach((patternOption) => {
-      if (patternOption.checked) {
-        console.log(patternOption)
-        proc_text_replaced = proc_text_replaced.replace('pattern = 0', `pattern = ${patternOption.value}`)
-      }
-    })
-    // proc_text_replaced = proc_text_replaced.replace('pattern = 0', 'pattern = 1')
-
-    // console.log(proc_text_replaced)
-    // ProcessText(proc_text);
-    // console.log("here i am: ", proc_text_replaced)
-    globalEditor.setCode(proc_text_replaced)
-}
-
-export function Stop() {
-  globalEditor.stop()
-}
-
-export function Start() {
-  globalEditor.evaluate()
-}
-
-export function ProcessText(match, ...args) {
-
-    // console.log("jere ", document.getElementById('flexRadioDefault1'))
-    let replace = ""
-    // if (document.getElementById('flexRadioDefault1').checked) {
-    //     replace = "_"
-    // }
-
-    return replace
-}
 
 export default function StrudelDemo() {
 
-const hasRun = useRef(false);
+  let globalEditor = useRef(null);
+  const hasRun = useRef(false);
+
+
+//   export function Proc() {
+
+//     let proc_text = document.getElementById('proc').value
+//     let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
+//     ProcessText(proc_text);
+//     globalEditor.setCode(proc_text_replaced)
+// }
+
+// export function ProcessText(match, ...args) {
+
+//     let replace = ""
+//     if (document.getElementById('flexRadioDefault2').checked) {
+//         replace = "_"
+//     }
+
+//     return replace
+// }
+
+
+  function ProcessText(match, ...args) {
+
+      let replace = ""
+      if (document.getElementById('flexRadioDefault2').checked) {
+          replace = "_"
+      }
+
+      return replace
+  }
+  
+  function Proc() {
+    if (globalEditor.current) {
+      console.log("noteir: ", document.getElementById('control-bassline:'))
+      let proc_text = document.getElementById('proc').value
+      console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
+      let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
+
+      // let slider = document.getElementById('sliderId');
+      // proc_text_replaced = proc_text_replaced.replace(proc_text.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g)), `setcps(${slider.value}/60/4)`)
+
+      let patternOptions = document.querySelectorAll('[name="patternOptions"]')
+      patternOptions.forEach((patternOption) => {
+        if (patternOption.checked) {
+          console.log(patternOption)
+          proc_text_replaced = proc_text_replaced.replace('pattern = 0', `pattern = ${patternOption.value}`)
+        }
+      })
+
+      globalEditor.current.setCode(proc_text_replaced)
+    }
+  }
+
+  function ProcEdit(currentText, replaceText) {
+    console.log("in here?", currentText, replaceText)
+    if (globalEditor.current) {
+      let proc_text = document.getElementById('proc').value
+      proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
+
+      globalEditor.current.setCode(proc_text)
+    }
+  }
+
+  // function Proc() {
+  //   if (globalEditor.current) {
+  //     let proc_text = document.getElementById('proc').value
+  
+  //     globalEditor.current.setCode(proc_text)
+  //   }
+  // }
+
+  function Stop() {
+    if (globalEditor.current) {
+      globalEditor.current.stop()
+    }
+  }
+
+  function Start() {
+    if (globalEditor.current) {
+      globalEditor.current.evaluate()
+    }
+  }
+
+  function Process() {
+    if (globalEditor.current) {
+      Proc()
+    }
+  }
+
+  function ProcAndPlay() {
+    if (globalEditor.current) {
+      Proc()
+      globalEditor.current.evaluate()
+    }
+  }
+
+  function ProcessText(match, ...args) {
+
+      // console.log("jere ", document.getElementById('flexRadioDefault1'))
+      let replace = ""
+      // if (document.getElementById('flexRadioDefault1').checked) {
+      //     replace = "_"
+      // }
+
+      return replace
+  }
+
 
 useEffect(() => {
 
@@ -112,7 +149,7 @@ useEffect(() => {
             canvas.height = canvas.height * 2;
             const drawContext = canvas.getContext('2d');
             const drawTime = [-2, 2]; // time window of drawn haps
-            globalEditor = new StrudelMirror({
+            globalEditor.current = new StrudelMirror({
                 defaultOutput: webaudioOutput,
                 getTime: () => getAudioContext().currentTime,
                 transpiler,
@@ -133,7 +170,6 @@ useEffect(() => {
             });
         console.log("globalEditor: ", globalEditor)
         document.getElementById('proc').value = stranger_tune
-        SetupButtons()
         Proc()
     }
 
@@ -154,8 +190,8 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <NavBar rowGap="3" buttonList={buttonList}/>
-                        <Range />
+                        <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay}}/>
+                        <Range callback={ProcEdit}/>
                     </div>
                 </div>
                 <div className="row">
@@ -164,7 +200,7 @@ return (
                         <ProcessTextarea />
                     </div>
                     <div className="col-md-4">
-                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions} editor={null}/>
+                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions} callback={ProcEdit}/>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
-function Range() {
+function Range(props) {
     const [sliderValue, setSliderValue] = useState(100);
 
     const handleSliderChange = (e) => {
-        setSliderValue(e.target.value);
+        let newSliderValue = e.target.value;
+        props.callback(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g), `setcps(${newSliderValue}/60/4)`)
+        setSliderValue(newSliderValue);
     };
 
   return (

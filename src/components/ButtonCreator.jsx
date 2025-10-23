@@ -11,13 +11,7 @@ function ButtonCreator (props) {
                 id={props.buttonId}
                 type={props.buttonType} 
                 value={props.buttonName} 
-                onClick={(e) =>  {
-                    // props.callBack();
-                    // if (props.callBack === 'globalEditor.evaluate()') {
-                    //     console.log(props.callBack)
-                    //     props.callBack
-                    // }
-                    }}
+                onClick={props.callBack}
                 style={{ width: 100 + '%' }}
             >
                 {props.buttonName}

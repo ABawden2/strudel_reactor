@@ -16,7 +16,7 @@ function NavBar (props) {
                         buttonName = {button.buttonName}
                         buttonType = {button.buttonType}
                         buttonCols = {button.buttonCols}
-                        callBack = {button.callBack}
+                        callBack = {props.functions[button.callBack]}
                     />
                 )})}
               </Row>
