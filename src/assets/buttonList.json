@@ -4,27 +4,27 @@
     "buttonName": "Preprocess",
     "buttonType": "button",
     "buttonCols": "6",
-    "callBack": "Proc()"
+    "callBack": "Proc"
   },
   {
     "buttonId": "process_play",
     "buttonName": "Proc & Play",
     "buttonType": "button",
     "buttonCols": "6",
-    "callBack": "procPlay"
+    "callBack": "ProcAndPlay"
   },
   {
     "buttonId": "play",
     "buttonName": "Play",
     "buttonType": "button",
     "buttonCols": "6",
-    "callBack": "globalEditor.evaluate()"
+    "callBack": "Start"
   },
   {
     "buttonId": "stop",
     "buttonName": "Stop",
     "buttonType": "button",
     "buttonCols": "6",
-    "callBack": "globalEditor.stop()"
+    "callBack": "Stop"
   }
 ]
