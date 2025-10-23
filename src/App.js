@@ -13,7 +13,7 @@ import NavBar from './components/NavBar';
 import buttonList from './assets/buttonList.json';
 import padElements from './assets/padElements.json';
 import DjPad from './components/DjPad';
-
+import ProcessTextarea from './components/ProcessTextarea';
 
 let globalEditor = null;
 
@@ -23,19 +23,19 @@ const handleD3Data = (event) => {
 
 export function SetupButtons() {
 
-    // document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-    // document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-    // document.getElementById('process').addEventListener('click', () => {
-    //     Proc()
-    // }
-    // )
-    // document.getElementById('process_play').addEventListener('click', () => {
-    //     if (globalEditor != null) {
-    //         Proc()
-    //         globalEditor.evaluate()
-    //     }
-    // }
-    // )
+    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
+    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
+    document.getElementById('process').addEventListener('click', () => {
+        Proc()
+    }
+    )
+    document.getElementById('process_play').addEventListener('click', () => {
+        if (globalEditor != null) {
+            Proc()
+            globalEditor.evaluate()
+        }
+    }
+    )
 }
 
 
@@ -50,16 +50,28 @@ export function ProcAndPlay() {
 
 export function Proc() {
 
-    console.log(document.getElementById('proc'))
+    // console.log("proc: ", document.getElementById('proc').value)
     let proc_text = document.getElementById('proc').value
-    let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
+    // console.log(document.getElementById('proc'))
+    console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
+    let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
+    // console.log(proc_text_replaced)
     ProcessText(proc_text);
-    console.log("here", proc_text_replaced)
+    // console.log("here i am: ", proc_text_replaced)
     globalEditor.setCode(proc_text_replaced)
+}
+
+export function Stop() {
+  globalEditor.stop()
+}
+
+export function Start() {
+  globalEditor.evaluate()
 }
 
 export function ProcessText(match, ...args) {
 
+    // console.log("jere ", document.getElementById('flexRadioDefault1'))
     let replace = ""
     if (document.getElementById('flexRadioDefault1').checked) {
         replace = "_"
@@ -105,7 +117,7 @@ useEffect(() => {
                     await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                 },
             });
-            
+        console.log("globalEditor: ", globalEditor)
         document.getElementById('proc').value = stranger_tune
         SetupButtons()
         Proc()
@@ -162,8 +174,7 @@ return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <label htmlFor="exampleFormControlTextarea1" className="form-label">Text to preprocess:</label>
-                        <textarea className="form-control" rows="15" id="proc" ></textarea>
+                        <ProcessTextarea />
                     </div>
                     <div className="col-md-4">
                         <NavBar rowGap="3" buttonList={buttonList}/>
@@ -176,19 +187,6 @@ return (
                     </div>
                     <div className="col-md-4">
                         <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions}/>
-                        {/* <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
-                            <label className="form-check-label" htmlFor="flexRadioDefault1">
-                                p1: ON
-                            </label>
-                        </div> */}
-                        {/* <DjPad checked="true" buttonValue="flexRadioDefault" buttonId="flexRadioDefault2" buttonName="p1: HUSH" callBack="ProcAndPlay"/> */}
-                        {/* <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={ProcAndPlay} />
-                            <label className="form-check-label" htmlFor="flexRadioDefault2">
-                                p1: HUSH
-                            </label>
-                        </div> */}
                     </div>
                 </div>
             </div>
@@ -196,16 +194,4 @@ return (
         </main >
     </div >
 );
-
-      //   className="mb-2"
-      //   id="toggle-check"
-      //   type="checkbox"
-      //   variant="outline-primary"
-      //   checked={checked}
-      //   value={props.value}
-      //   onChange={(e) => setChecked(e.currentTarget.checked)}
-      // >
-      //   {props.buttonName}
-
-
 }
