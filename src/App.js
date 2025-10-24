@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
 import { evalScope } from '@strudel/core';
 import { drawPianoroll } from '@strudel/draw';
@@ -26,6 +26,7 @@ const handleD3Data = (event) => {
 export default function StrudelDemo() {
 
   let globalEditor = useRef(null);
+  const [procText, setProcText] = useState('') 
   const hasRun = useRef(false);
 
 
@@ -59,34 +60,44 @@ export default function StrudelDemo() {
   }
   
   function Proc() {
+    console.log('1')
     if (globalEditor.current) {
-      console.log("noteir: ", document.getElementById('control-bassline:'))
-      let proc_text = document.getElementById('proc').value
-      console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
-      let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
+      console.log("2")
+      let procValue = document.getElementById('proc').value;
+      if (procText !== procValue) {
+          console.log("4")
 
-      // let slider = document.getElementById('sliderId');
-      // proc_text_replaced = proc_text_replaced.replace(proc_text.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g)), `setcps(${slider.value}/60/4)`)
+        setProcText(procValue)
+      }
+      console.log("3", "procValue", procValue)
+      globalEditor.current.setCode(procValue);
+      // console.log("noteir: ", document.getElementById('control-bassline:'))
+      // let proc_text = document.getElementById('proc').value
+      // // console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
+      // let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
 
-      let patternOptions = document.querySelectorAll('[name="patternOptions"]')
-      patternOptions.forEach((patternOption) => {
-        if (patternOption.checked) {
-          console.log(patternOption)
-          proc_text_replaced = proc_text_replaced.replace('pattern = 0', `pattern = ${patternOption.value}`)
-        }
-      })
 
-      globalEditor.current.setCode(proc_text_replaced)
+      // // let patternOptions = document.querySelectorAll('[name="patternOptions"]')
+      // // patternOptions.forEach((patternOption) => {
+      // //   if (patternOption.checked) {
+      // //     console.log(patternOption)
+      // //     proc_text_replaced = proc_text_replaced.replace('pattern = 0', `pattern = ${patternOption.value}`)
+      // //   }
+      // // })
     }
   }
 
   function ProcEdit(currentText, replaceText) {
-    console.log("in here?", currentText, replaceText)
+    // console.log(document.getElementById('proc').value)
+    // console.log("in here?", 'currentText', currentText, replaceText)
     if (globalEditor.current) {
-      let proc_text = document.getElementById('proc').value
-      proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
-
-      globalEditor.current.setCode(proc_text)
+      console.log("does it go in here all the time?", document.getElementById('proc').value)
+      let proc_text = document.getElementById('proc').value;
+      // console.log("befpre: ", proc_text, proc_text.match(currentText), "currentText: ", currentText,  replaceText)
+      let proc_text_replaced = proc_text.replace(proc_text.match(currentText), replaceText);
+      setProcText(proc_text_replaced);
+      console.log('after edit/ save', proc_text)
+      // globalEditor.current.setCode(proc_text)
     }
   }
 
@@ -123,17 +134,25 @@ export default function StrudelDemo() {
     }
   }
 
-  function ProcessText(match, ...args) {
+  // function ProcessText(match, ...args) {
 
-      // console.log("jere ", document.getElementById('flexRadioDefault1'))
-      let replace = ""
-      // if (document.getElementById('flexRadioDefault1').checked) {
-      //     replace = "_"
-      // }
+  //     // console.log("jere ", document.getElementById('flexRadioDefault1'))
+  //     let replace = ""
+  //     // if (document.getElementById('flexRadioDefault1').checked) {
+  //     //     replace = "_"
+  //     // }
 
-      return replace
+  //     return replace
+  // }
+
+useEffect(() => {
+  if (globalEditor.current) {
+    console.log("getting the correct data", procText)
+    let t = procText;
+    globalEditor.current.setCode(t);
+    console.log(document.getElementById('proc').value)
   }
-
+}, [procText])
 
 useEffect(() => {
 
@@ -168,8 +187,12 @@ useEffect(() => {
                     await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                 },
             });
-        console.log("globalEditor: ", globalEditor)
-        document.getElementById('proc').value = stranger_tune
+        // console.log("globalEditor: ", globalEditor)
+        document.getElementById('proc').value = stranger_tune;
+        console.log("procText 2: ", stranger_tune)
+
+        setProcText(stranger_tune);
+        console.log("rehfeifherfhierhf", document.getElementById('proc').value)
         Proc()
     }
 
@@ -191,7 +214,7 @@ return (
                     </div>
                     <div className="col-md-4">
                         <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay}}/>
-                        <Range callback={ProcEdit}/>
+                        <Range callBack={ProcEdit}/>
                     </div>
                 </div>
                 <div className="row">
@@ -200,7 +223,7 @@ return (
                         <ProcessTextarea />
                     </div>
                     <div className="col-md-4">
-                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions} callback={ProcEdit}/>
+                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions} callBack={ProcEdit}/>
                     </div>
                 </div>
             </div>
