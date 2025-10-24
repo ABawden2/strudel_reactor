@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import CheckBox from './CheckBox';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import RadioButton from './RadioButton';
+// import RadioButton from './RadioButton';
+import RadioGroup from './RadioGroup';
 
 function DjPad(props) {
     const [checkBoxList, setState] = useState([])
@@ -30,25 +30,12 @@ function DjPad(props) {
         }
     }, [])
     // Empty array will stop it from continusly looping, and makes it almost just loop once.
-
+    console.log(props)
   return (
     <Container>
         <Row>
             Pattern Options
-            <ButtonGroup>
-                {Object.values(props.patternOptions).map((pattern) => {
-                    return (
-                        <RadioButton
-                            key = {pattern.buttonId}
-                            buttonId = {pattern.buttonId}
-                            buttonName = {pattern.buttonName}
-                            buttonValue = {pattern.buttonValue}
-                            buttonGroupName = {pattern.buttonGroupName}
-                            buttonColour = {pattern.buttonColour}
-                            callBack = {pattern.callBack}
-                        />
-                )})}
-            </ButtonGroup>
+            <RadioGroup patternOptions={props.patternOptions} callBack={props.callBack}/>
         </Row>
         <Row className={'mt-4 g-' + props.rowGap}>
         {Object.values(checkBoxList).map((button) => {
@@ -61,7 +48,7 @@ function DjPad(props) {
                 checked = {button.checked}
                 buttonCols = {button.buttonCols}
                 buttonColour = {button.buttonColour}
-                callBack = {button.callBack}
+                callBack = {props.callBack}
             />
         )})}
         </Row>
