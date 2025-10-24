@@ -26,7 +26,6 @@ const handleD3Data = (event) => {
 export default function StrudelDemo() {
 
   let globalEditor = useRef(null);
-  const [procText, setProcText] = useState('') 
   const hasRun = useRef(false);
 
 
@@ -62,52 +61,20 @@ export default function StrudelDemo() {
   function Proc() {
     console.log('1')
     if (globalEditor.current) {
-      console.log("2")
-      let procValue = document.getElementById('proc').value;
-      if (procText !== procValue) {
-          console.log("4")
-
-        setProcText(procValue)
-      }
-      console.log("3", "procValue", procValue)
-      globalEditor.current.setCode(procValue);
-      // console.log("noteir: ", document.getElementById('control-bassline:'))
-      // let proc_text = document.getElementById('proc').value
-      // // console.log(proc_text.match(new RegExp(/^\b\w+:\s/gm)))
-      // let proc_text_replaced = proc_text.replaceAll('bassline:', '_bassline:');//ProcessText);
-
-
-      // // let patternOptions = document.querySelectorAll('[name="patternOptions"]')
-      // // patternOptions.forEach((patternOption) => {
-      // //   if (patternOption.checked) {
-      // //     console.log(patternOption)
-      // //     proc_text_replaced = proc_text_replaced.replace('pattern = 0', `pattern = ${patternOption.value}`)
-      // //   }
-      // // })
+      let proc_text = document.getElementById('proc').value
+      globalEditor.current.setCode(proc_text)
     }
   }
 
   function ProcEdit(currentText, replaceText) {
-    // console.log(document.getElementById('proc').value)
-    // console.log("in here?", 'currentText', currentText, replaceText)
     if (globalEditor.current) {
-      console.log("does it go in here all the time?", document.getElementById('proc').value)
-      let proc_text = document.getElementById('proc').value;
-      // console.log("befpre: ", proc_text, proc_text.match(currentText), "currentText: ", currentText,  replaceText)
-      let proc_text_replaced = proc_text.replace(proc_text.match(currentText), replaceText);
-      setProcText(proc_text_replaced);
-      console.log('after edit/ save', proc_text)
-      // globalEditor.current.setCode(proc_text)
+      let proc_text = document.getElementById('proc').value
+      proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
+      document.getElementById('proc').value = proc_text;
+      globalEditor.current.setCode(proc_text)
     }
   }
 
-  // function Proc() {
-  //   if (globalEditor.current) {
-  //     let proc_text = document.getElementById('proc').value
-  
-  //     globalEditor.current.setCode(proc_text)
-  //   }
-  // }
 
   function Stop() {
     if (globalEditor.current) {
@@ -133,26 +100,6 @@ export default function StrudelDemo() {
       globalEditor.current.evaluate()
     }
   }
-
-  // function ProcessText(match, ...args) {
-
-  //     // console.log("jere ", document.getElementById('flexRadioDefault1'))
-  //     let replace = ""
-  //     // if (document.getElementById('flexRadioDefault1').checked) {
-  //     //     replace = "_"
-  //     // }
-
-  //     return replace
-  // }
-
-useEffect(() => {
-  if (globalEditor.current) {
-    console.log("getting the correct data", procText)
-    let t = procText;
-    globalEditor.current.setCode(t);
-    console.log(document.getElementById('proc').value)
-  }
-}, [procText])
 
 useEffect(() => {
 
@@ -187,12 +134,7 @@ useEffect(() => {
                     await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                 },
             });
-        // console.log("globalEditor: ", globalEditor)
-        document.getElementById('proc').value = stranger_tune;
-        console.log("procText 2: ", stranger_tune)
-
-        setProcText(stranger_tune);
-        console.log("rehfeifherfhierhf", document.getElementById('proc').value)
+        document.getElementById('proc').value = stranger_tune
         Proc()
     }
 
