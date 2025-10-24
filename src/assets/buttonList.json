@@ -4,7 +4,7 @@
     "buttonName": "Preprocess",
     "buttonType": "button",
     "buttonCols": "6",
-    "callBack": "Proc"
+    "callBack": "Process"
   },
   {
     "buttonId": "process_play",

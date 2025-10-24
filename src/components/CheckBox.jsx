@@ -8,13 +8,10 @@ function CheckBox(props) {
   const [checked, setChecked] = useState(false);
 
      
-    useEffect(() => {
-      console.log("in here", checked)
-        let value = checked ? props.buttonValue : props.buttonName;
-          // Replace the proc string
-        console.log(props.buttonName, value)
-        props.callBack(props.buttonName, value);
-    }, [checked]);
+  useEffect(() => {
+      let value = checked ? props.buttonValue : props.buttonName;
+      props.callBack(props.buttonName, value);
+  }, [checked]);
 
   return (
      <Col xs={12} md={props.buttonCols} lg={props.buttonCols}>
@@ -27,7 +24,6 @@ function CheckBox(props) {
         value={props.buttonValue}
         style={{ width: 100 + '%' }}
         onChange={(e) =>  {
-          console.log(e.currentTarget)
           setChecked(e.currentTarget.checked);
         }}
       >

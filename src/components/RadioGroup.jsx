@@ -7,6 +7,7 @@ function RadioGroup(props) {
     const [oldValue, setPreviousValue] = useState('0');
 
     function setRadioButton(value) {
+        // Check is the value has changed.
         if (radioValue !== value) {
             console.log("getting in here now?")
             setPreviousValue(radioValue);
