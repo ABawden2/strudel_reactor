@@ -16,7 +16,7 @@ import DjPad from './components/DjPad';
 import ProcessTextarea from './components/ProcessTextarea';
 import patternOptions from './assets/patternOptions.json';
 import Range from './components/Range';
-
+import Select from './components/Select';
 
 const handleD3Data = (event) => {
     console.log(event.detail);
@@ -69,6 +69,7 @@ export default function StrudelDemo() {
   function ProcEdit(currentText, replaceText) {
     if (globalEditor.current) {
       let proc_text = document.getElementById('proc').value
+      console.log(proc_text.match(currentText), replaceText, currentText, proc_text)
       proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
       document.getElementById('proc').value = proc_text;
       globalEditor.current.setCode(proc_text)
@@ -157,6 +158,7 @@ return (
                     <div className="col-md-4">
                         <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay}}/>
                         <Range callBack={ProcEdit}/>
+                        <Select callBack={ProcEdit}/>
                     </div>
                 </div>
                 <div className="row">
