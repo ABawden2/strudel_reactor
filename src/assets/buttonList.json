@@ -1,51 +1,62 @@
- [
-  {
-    "buttonId": "process",
-    "buttonName": "Preprocess",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "Process"
-  },
-  {
-    "buttonId": "process_play",
-    "buttonName": "Proc & Play",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "ProcAndPlay"
-  },
-  {
-    "buttonId": "play",
-    "buttonName": "Play",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "Start"
-  },
-  {
-    "buttonId": "stop",
-    "buttonName": "Stop",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "Stop"
-  },
-  {
-    "buttonId": "save",
-    "buttonName": "Save Data",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "SaveJson"
-  },
-  {
-    "buttonId": "load",
-    "buttonName": "Load Data",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "LoadJson"
-  },
-  {
-    "buttonId": "delate",
-    "buttonName": "Delate Json",
-    "buttonType": "button",
-    "buttonCols": "6",
-    "callBack": "DeleteJsonData"
-  }
-]
+{
+  "mainControls": [
+    {
+      "buttonId": "play",
+      "buttonName": "Play",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "success",
+      "callBack": "Start"
+    },
+    {
+      "buttonId": "stop",
+      "buttonName": "Stop",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "success",
+      "callBack": "Stop"
+    },
+    {
+      "buttonId": "save",
+      "buttonName": "Save Data",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "success",
+      "callBack": "SaveJson"
+    },
+    {
+      "buttonId": "load",
+      "buttonName": "Load Data",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "success",
+      "callBack": "LoadJson"
+    },
+    {
+      "buttonId": "delate",
+      "buttonName": "Delate Json",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "danger",
+      "callBack": "DeleteJsonData"
+    }
+  ],
+  "previewControls": [
+    {
+      "buttonId": "process",
+      "buttonName": "Preprocess",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "success",
+      "callBack": "Process"
+    },
+    {
+      "buttonId": "process_play",
+      "buttonName": "Proc & Play",
+      "buttonType": "button",
+      "buttonCols": "6",
+      "colour": "success",
+      "callBack": "ProcAndPlay"
+    }
+  ]
+}

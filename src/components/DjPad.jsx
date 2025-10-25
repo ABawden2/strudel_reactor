@@ -61,37 +61,3 @@ function DjPad(props) {
 }
 
 export default DjPad;
-
-// import React, { useState } from 'react';
-// import Card from "./Card";
-
-// const CardList = () => {
-    
-//     const [cardData, setState] = useState([])
-
-//     React.useEffect(() => {
-//         fetch("http://localhost:5248/api/ItemsWebAPI")///GetItems")
-//             .then(response => response.json())
-//             // adding the data into cardData
-//             .then(data => setState(data))
-//             .catch(err => console.log(err));
-//     }, [])
-//     // Empty array will stop it from continusly looping, and makes it almost just loop once.
-
-//     return (
-//         <div className="row">
-//             {cardData.map((obj) => (
-//                 <Card
-//                     key={obj.itemId}
-//                     itemId={obj.itemId}
-//                     itemName={obj.itemName}
-//                     itemDescription={obj.itemDescription}
-//                     itemCost={obj.itemCost}
-//                     itemImage={obj.itemImage}
-//                 />
-//             ))}
-//         </div>
-//     )
-// }
-
-// export default CardList;

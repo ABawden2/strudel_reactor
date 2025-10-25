@@ -1,25 +1,16 @@
-import ButtonCreator from './ButtonCreator';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Navbar from 'react-bootstrap/Navbar';
+import NavRowItems from './NavRowItems';
+import Stack from 'react-bootstrap/Stack';
 
 function NavBar (props) {
     return (
         <Navbar>
             <Container>
-              <Row className={'g-' + props.rowGap}>
-                {Object.values(props.buttonList).map((button) => {
-                    return (
-                    <ButtonCreator
-                        key = {button.buttonId}
-                        buttonId = {button.buttonId}
-                        buttonName = {button.buttonName}
-                        buttonType = {button.buttonType}
-                        buttonCols = {button.buttonCols}
-                        callBack = {props.functions[button.callBack]}
-                    />
-                )})}
-              </Row>
+                <Stack gap={5}>
+                    <NavRowItems navButtoncontrols={props.buttonList.mainControls} rowGap={props.rowGap} buttonList={props.buttonList} functions={props.functions}/>
+                    <NavRowItems navButtoncontrols={props.buttonList.previewControls} rowGap={props.rowGap} buttonList={props.buttonList} functions={props.functions}/>
+                </Stack>
             </Container>
         </Navbar>
     )

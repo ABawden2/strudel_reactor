@@ -7,7 +7,7 @@ function ButtonCreator (props) {
     return (
         <Col xs={12} md={props.buttonCols} lg={props.buttonCols}>
             <Button 
-                variant="outline-success" 
+                variant={'outline-' + props.buttonColour}
                 id={props.buttonId}
                 type={props.buttonType} 
                 value={props.buttonName} 

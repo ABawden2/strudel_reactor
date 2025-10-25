@@ -169,22 +169,22 @@ return (
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-7" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" />
                     </div>
-                    <div className="col-md-4">
-                        <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
-                        <Range callBack={ProcEdit}/>
-                        <Select callBack={ProcEdit}/>
+                    {/* When graph comes in hide this element using the attribute hidden or something else. */}
+                    <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <ProcessTextarea />
                     </div>
                 </div>
                 <div className="row">
-                    {/* When graph comes in hide this element using the attribute hidden or something else. */}
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <ProcessTextarea />
-                    </div>
                     <div className="col-md-4">
+                        <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
+                    </div>
+                    <div className="col-md-8">
+                        <Range callBack={ProcEdit}/>
+                        <Select callBack={ProcEdit}/>
                         <DjPad rowGap="2" checkBoxList={padElements} groupOptions={groupOptions} callBack={ProcEdit}/>
                     </div>
                 </div>
