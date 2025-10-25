@@ -1,23 +1,41 @@
-[
-  {
-    "buttonValue": "0", 
-    "buttonId": "patternOptions",
-    "buttonName": "1",
-    "buttonGroupName": "patternOptions",
-    "buttonColour": "outline-primary"
-  },
-  {
-    "buttonValue": "1", 
-    "buttonId": "patternOptions2",
-    "buttonName": "2",
-    "buttonGroupName": "patternOptions",
-    "buttonColour": "outline-primary"
-  },
-  {
-    "buttonValue": "2", 
-    "buttonId": "patternOptions3",
-    "buttonName": "3",
-    "buttonGroupName": "patternOptions",
-    "buttonColour": "outline-primary"
-  }
-]
+{
+  "pattern": [
+    {
+      "buttonValue": "0", 
+      "buttonId": "patternOptions",
+      "buttonName": "1",
+      "buttonGroupName": "patternOptions",
+      "buttonColour": "outline-primary"
+    },
+    {
+      "buttonValue": "1", 
+      "buttonId": "patternOptions2",
+      "buttonName": "2",
+      "buttonGroupName": "patternOptions",
+      "buttonColour": "outline-primary"
+    },
+    {
+      "buttonValue": "2", 
+      "buttonId": "patternOptions3",
+      "buttonName": "3",
+      "buttonGroupName": "patternOptions",
+      "buttonColour": "outline-primary"
+    }
+  ],
+  "bass": [
+    {
+      "buttonValue": "0", 
+      "buttonId": "baseOptions",
+      "buttonName": "1",
+      "buttonGroupName": "baseOptions",
+      "buttonColour": "outline-primary"
+    },
+    {
+      "buttonValue": "1", 
+      "buttonId": "baseOptions2",
+      "buttonName": "2",
+      "buttonGroupName": "baseOptions",
+      "buttonColour": "outline-primary"
+    }
+  ]
+}

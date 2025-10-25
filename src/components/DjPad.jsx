@@ -33,10 +33,14 @@ function DjPad(props) {
     console.log(props)
   return (
     <Container>
-        <Row>
-            Pattern Options
-            <RadioGroup patternOptions={props.patternOptions} callBack={props.callBack}/>
-        </Row>
+        {Object.keys(props.groupOptions).map((option) => {
+            return(
+                <Row>
+                    {option.slice(0,1).toUpperCase() + option.slice(1,)} Options
+                    <RadioGroup patternOptions={props.groupOptions[option]} optionKey={option} callBack={props.callBack}/>
+                </Row>
+            )
+        })}
         <Row className={'mt-4 g-' + props.rowGap}>
         {Object.values(checkBoxList).map((button) => {
             return (

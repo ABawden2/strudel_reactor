@@ -5,19 +5,19 @@ import { ToggleButton } from 'react-bootstrap';
 function RadioGroup(props) {
     const [radioValue, setRadioValue] = useState('0');
     const [oldValue, setPreviousValue] = useState('0');
+    const groupKey = props.optionKey;
 
     function setRadioButton(value) {
         // Check is the value has changed.
         if (radioValue !== value) {
-            console.log("getting in here now?")
             setPreviousValue(radioValue);
             setRadioValue(value);
         }
     }
     
     useEffect(() => {
-        console.log(radioValue, oldValue)
-        props.callBack(`pattern = ${oldValue}`, `pattern = ${radioValue}`);
+        console.log(groupKey, radioValue, oldValue)
+        props.callBack(`${groupKey} = ${oldValue}`, `${groupKey} = ${radioValue}`);
     }, [radioValue]);
     // Will run once initallially and then every time the radioValue is run or props.callback is called.
 

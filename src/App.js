@@ -14,13 +14,15 @@ import buttonList from './assets/buttonList.json';
 import padElements from './assets/padElements.json';
 import DjPad from './components/DjPad';
 import ProcessTextarea from './components/ProcessTextarea';
-import patternOptions from './assets/patternOptions.json';
+import groupOptions from './assets/patternOptions.json';
 import Range from './components/Range';
 import Select from './components/Select';
 
 const handleD3Data = (event) => {
     console.log(event.detail);
 };
+
+// drum structure
 
 
 export default function StrudelDemo() {
@@ -69,7 +71,6 @@ export default function StrudelDemo() {
   function ProcEdit(currentText, replaceText) {
     if (globalEditor.current) {
       let proc_text = document.getElementById('proc').value
-      console.log(proc_text.match(currentText), replaceText, currentText, proc_text)
       proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
       document.getElementById('proc').value = proc_text;
       globalEditor.current.setCode(proc_text)
@@ -142,7 +143,6 @@ useEffect(() => {
 }, []);
 
 
-// TODO: somehow allow for speed to change.
 // .lpf controls the volume of main arf and base
 return (
     <div>
@@ -167,7 +167,7 @@ return (
                         <ProcessTextarea />
                     </div>
                     <div className="col-md-4">
-                        <DjPad rowGap="2" checkBoxList={padElements} patternOptions={patternOptions} callBack={ProcEdit}/>
+                        <DjPad rowGap="2" checkBoxList={padElements} groupOptions={groupOptions} callBack={ProcEdit}/>
                     </div>
                 </div>
             </div>

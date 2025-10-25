@@ -9,14 +9,12 @@ function Select(props) {
   const [previousSelected, setPreviousValue] = useState('arpeggiator1');
 
   function setSelectedValue(event) {
-    // console.log(event.target.value)
     setPreviousValue(selected);
     setSelected(event.target.value);
   }
 
 
   useEffect(() => {
-    // console.log("test", selected, 'thing', previousSelected)
     props.callBack(new RegExp(`(${previousSelected},)`, 'g'), selected + ',');
   }, [selected]);
 
