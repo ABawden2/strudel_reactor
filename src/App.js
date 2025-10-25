@@ -103,6 +103,24 @@ export default function StrudelDemo() {
     }
   }
 
+  function SaveJson() {
+    if (globalEditor.current) {
+      console.log('save')
+    }
+  }
+
+  function LoadJson() {
+    if (globalEditor.current) {
+      console.log('load')
+    }
+  }
+
+  function DeleteJsonData() {
+    if (globalEditor.current) {
+      console.log('delate')
+    }
+  }
+
 useEffect(() => {
 
     if (!hasRun.current) {
@@ -156,7 +174,7 @@ return (
                         <div id="output" />
                     </div>
                     <div className="col-md-4">
-                        <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay}}/>
+                        <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
                         <Range callBack={ProcEdit}/>
                         <Select callBack={ProcEdit}/>
                     </div>
