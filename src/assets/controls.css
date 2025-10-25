@@ -1,0 +1,13 @@
+.highlight-container  {
+    padding: 12px;
+    background: rgb(201 197 197 / 8%);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pad-button-alignment {
+    margin-top: 0;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}

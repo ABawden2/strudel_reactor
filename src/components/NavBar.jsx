@@ -6,7 +6,7 @@ import Stack from 'react-bootstrap/Stack';
 function NavBar (props) {
     return (
         <Navbar>
-            <Container>
+            <Container className='highlight-container'>
                 <Stack gap={5}>
                     <NavRowItems navButtoncontrols={props.buttonList.mainControls} rowGap={props.rowGap} buttonList={props.buttonList} functions={props.functions}/>
                     <NavRowItems navButtoncontrols={props.buttonList.previewControls} rowGap={props.rowGap} buttonList={props.buttonList} functions={props.functions}/>

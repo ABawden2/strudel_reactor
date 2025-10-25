@@ -21,7 +21,7 @@ function Select(props) {
     return (
         <InputGroup className="mb-3">
             <InputGroup.Text>Select an Arpeggiator:</InputGroup.Text>
-                <Form.Select aria-label="Default select example" value={selected} onChange={(event) => setSelectedValue(event)}>
+                <Form.Select aria-label="Default select example" value={selected} onChange={(event) => setSelectedValue(event)} size="sm">
                     <option value="arpeggiator1">arpeggiator1</option>
                     <option value="arpeggiator2">arpeggiator2</option>
                 </Form.Select>

@@ -14,15 +14,15 @@ function CheckBox(props) {
   }, [checked]);
 
   return (
-     <Col xs={12} md={props.buttonCols} lg={props.buttonCols}>
+     <Col xs={12} md={props.buttonCols} lg={props.buttonCols} className="pad-button-alignment">
       <ToggleButton
-        className="mb-2"
+        // className="mb-2"
         id={props.buttonId}
         type="checkbox"
         variant={props.buttonColour}
         checked={checked}
         value={props.buttonValue}
-        style={{ width: 100 + '%' }}
+        style={{ width: 100 + '%', padding: 10 + '%' }}
         onChange={(e) =>  {
           setChecked(e.currentTarget.checked);
         }}

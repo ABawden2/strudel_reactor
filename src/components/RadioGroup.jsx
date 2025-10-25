@@ -32,6 +32,7 @@ function RadioGroup(props) {
                     name={pattern.buttonGroupName}
                     variant={pattern.buttonColour}
                     value={pattern.buttonValue}
+                    size="sm"
                     checked={radioValue === pattern.buttonValue}
                     onClick={() => setRadioButton(pattern.buttonValue)}
                     >

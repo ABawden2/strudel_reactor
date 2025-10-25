@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import CheckBox from './CheckBox';
 // import RadioButton from './RadioButton';
 import RadioGroup from './RadioGroup';
+import Select from './Select';
+import Range from './Range';
 
 function DjPad(props) {
     const [checkBoxList, setState] = useState([])
@@ -20,7 +23,7 @@ function DjPad(props) {
                 buttonValue: `_${element}`, 
                 buttonId: `control-${element}`,
                 buttonName: element,
-                buttonCols: "4",
+                buttonCols: "6",
                 buttonColour: "outline-primary",
                 callBack: props.Proc
             });
@@ -33,28 +36,37 @@ function DjPad(props) {
     console.log(props)
   return (
     <Container>
-        {Object.keys(props.groupOptions).map((option) => {
-            return(
-                <Row>
-                    {option.slice(0,1).toUpperCase() + option.slice(1,)} Options
-                    <RadioGroup patternOptions={props.groupOptions[option]} optionKey={option} callBack={props.callBack}/>
+        <Row>
+            <Range callBack={props.callBack}/>
+            <Col xs={12} md={6} lg={6}>
+                <Select callBack={props.callBack}/>
+
+                {Object.keys(props.groupOptions).map((option) => {
+                    return(
+                        <Row>
+                            {option.slice(0,1).toUpperCase() + option.slice(1,)} Options
+                            <RadioGroup patternOptions={props.groupOptions[option]} optionKey={option} callBack={props.callBack}/>
+                        </Row>
+                    )
+                })}
+            </Col>
+            <Col xs={12} md={6} lg={6}>
+                <Row className={'mt-4 g-' + props.rowGap}>
+                    {Object.values(checkBoxList).map((button) => {
+                        return (
+                        <CheckBox
+                            key = {button.buttonId}
+                            buttonId = {button.buttonId}
+                            buttonName = {button.buttonName}
+                            buttonValue = {button.buttonValue}
+                            checked = {button.checked}
+                            buttonCols = {button.buttonCols}
+                            buttonColour = {button.buttonColour}
+                            callBack = {props.callBack}
+                        />
+                    )})}
                 </Row>
-            )
-        })}
-        <Row className={'mt-4 g-' + props.rowGap}>
-        {Object.values(checkBoxList).map((button) => {
-            return (
-            <CheckBox
-                key = {button.buttonId}
-                buttonId = {button.buttonId}
-                buttonName = {button.buttonName}
-                buttonValue = {button.buttonValue}
-                checked = {button.checked}
-                buttonCols = {button.buttonCols}
-                buttonColour = {button.buttonColour}
-                callBack = {props.callBack}
-            />
-        )})}
+            </Col>
         </Row>
     </Container>
   );

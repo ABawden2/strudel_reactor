@@ -183,8 +183,6 @@ return (
                         <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
                     </div>
                     <div className="col-md-8">
-                        <Range callBack={ProcEdit}/>
-                        <Select callBack={ProcEdit}/>
                         <DjPad rowGap="2" checkBoxList={padElements} groupOptions={groupOptions} callBack={ProcEdit}/>
                     </div>
                 </div>
