@@ -9,7 +9,7 @@ import Select from './Select';
 import Range from './Range';
 
 function DjPad(props) {
-    const [checkBoxList, setState] = useState([])
+    const [checkBoxList, setCheckBoxList] = useState([])
 
     React.useEffect(() => {
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
@@ -29,7 +29,7 @@ function DjPad(props) {
             });
             });
             // console.log(transformedElements)
-            setState(transformedElements);
+            setCheckBoxList(transformedElements);
         }
     }, [])
     // Empty array will stop it from continusly looping, and makes it almost just loop once.
