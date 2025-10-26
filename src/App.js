@@ -11,12 +11,10 @@ import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import NavBar from './components/NavBar';
 import buttonList from './assets/buttonList.json';
-import padElements from './assets/padElements.json';
 import DjPad from './components/DjPad';
 import ProcessTextarea from './components/ProcessTextarea';
 import groupOptions from './assets/patternOptions.json';
-import Range from './components/Range';
-import Select from './components/Select';
+
 
 const handleD3Data = (event) => {
     console.log(event.detail);
@@ -29,51 +27,21 @@ export default function StrudelDemo() {
 
   let globalEditor = useRef(null);
   const hasRun = useRef(false);
+  const [processText, setProcessText] = useState(stranger_tune);
 
-
-//   export function Proc() {
-
-//     let proc_text = document.getElementById('proc').value
-//     let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
-//     ProcessText(proc_text);
-//     globalEditor.setCode(proc_text_replaced)
-// }
-
-// export function ProcessText(match, ...args) {
-
-//     let replace = ""
-//     if (document.getElementById('flexRadioDefault2').checked) {
-//         replace = "_"
-//     }
-
-//     return replace
-// }
-
-
-  function ProcessText(match, ...args) {
-
-      let replace = ""
-      if (document.getElementById('flexRadioDefault2').checked) {
-          replace = "_"
-      }
-
-      return replace
-  }
-  
+ 
   function Proc() {
-    console.log('1')
     if (globalEditor.current) {
-      let proc_text = document.getElementById('proc').value
-      globalEditor.current.setCode(proc_text)
+      globalEditor.current.setCode(processText);
     }
   }
 
   function ProcEdit(currentText, replaceText) {
     if (globalEditor.current) {
-      let proc_text = document.getElementById('proc').value
+      let proc_text = processText;
       proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
       document.getElementById('proc').value = proc_text;
-      globalEditor.current.setCode(proc_text)
+      setProcessText(proc_text);
     }
   }
 
@@ -90,6 +58,9 @@ export default function StrudelDemo() {
     }
   }
 
+
+  // Done automatically so there is no point for these buttons.
+  // TODO: Remove later!!
   function Process() {
     if (globalEditor.current) {
       Proc()
@@ -155,10 +126,10 @@ useEffect(() => {
                 },
             });
         document.getElementById('proc').value = stranger_tune
-        Proc()
     }
+    globalEditor.current.setCode(processText);
 
-}, []);
+}, [processText]);
 
 
 // .lpf controls the volume of main arf and base
@@ -175,7 +146,7 @@ return (
                     </div>
                     {/* When graph comes in hide this element using the attribute hidden or something else. */}
                     <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <ProcessTextarea />
+                        <ProcessTextarea defaultValue={processText} onChange={(event) => setProcessText(event.target.value)}/>
                     </div>
                 </div>
                 <div className="row">
@@ -183,7 +154,7 @@ return (
                         <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
                     </div>
                     <div className="col-md-8">
-                        <DjPad rowGap="2" checkBoxList={padElements} groupOptions={groupOptions} callBack={ProcEdit}/>
+                        <DjPad rowGap="2" groupOptions={groupOptions} callBack={ProcEdit}/>
                     </div>
                 </div>
             </div>
