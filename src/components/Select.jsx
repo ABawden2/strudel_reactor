@@ -18,10 +18,12 @@ function Select(props) {
     props.callBack(new RegExp(`(${previousSelected},)`, 'g'), selected + ',');
   }, [selected]);
 
+
+
     return (
         <InputGroup className="mb-3">
-            <InputGroup.Text>Select an Arpeggiator:</InputGroup.Text>
-                <Form.Select aria-label="Default select example" value={selected} onChange={(event) => setSelectedValue(event)} size="sm">
+            <InputGroup.Text className='select-title'>Select an Arpeggiator:</InputGroup.Text>
+                <Form.Select data-style="btn-dark" className="btn btn-dark dj-select-form" style={{"--bs-btn-bg": "#111", "--bs-btn-hover-bg": "#252529", "--bs-btn-active-bg": "#111"}} aria-label="Default select example" value={selected} onChange={(event) => setSelectedValue(event)} size="sm">
                     <option value="arpeggiator1">arpeggiator1</option>
                     <option value="arpeggiator2">arpeggiator2</option>
                 </Form.Select>

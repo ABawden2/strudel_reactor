@@ -1,7 +1,28 @@
 .highlight-container  {
+    /* background: rgb(201 197 197 / 8%);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.2); */
     padding: 12px;
-    background: rgb(201 197 197 / 8%);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+    border: 1px solid #222;
+    background-color: #111;
+    box-shadow: 0 1px 2px 0 rgb(2 7 49 / 79%), 0 1px 2px 0 rgb(7 16 98);
+}
+
+
+.select-option {
+    /* background: black; */
+    color: white !important;
+    background: black !important;
+}
+
+.dj-select-form {
+    border: 1px solid white !important;
+    /* background: black !important; */
+}
+
+.select-title {
+    background: none !important;
+    color: white !important;
 }
 
 .pad-button-alignment {
@@ -10,4 +31,132 @@
     justify-content: center;
     align-items: center;
     display: flex;
+}
+
+.btn-outline-pink {
+    --bs-btn-color: #a100c9 !important;
+    --bs-btn-border-color: #a100c9 !important;
+    --bs-btn-hover-color: #000 !important;
+    --bs-btn-hover-bg: #a100c9 !important;
+    --bs-btn-hover-border-color: #a100c9 !important;
+    --bs-btn-focus-shadow-rgb: 13, 202, 240 !important;
+    --bs-btn-active-color: #000 !important;
+    --bs-btn-active-bg: #a100c9 !important;
+    --bs-btn-active-border-color: #a100c9 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: #a100c9 !important;
+    --bs-btn-disabled-bg: transparent !important;
+    --bs-btn-disabled-border-color: #a100c9 !important;
+    --bs-gradient: none !important;
+    box-shadow: 0 1px 3px 0 #bd20e4, 0 1px 3px 0 #c61af1 !important;
+}
+
+/* Force gradient on active state */
+.btn-outline-pink:active,
+.btn-outline-pink.active,
+.btn-outline-pink:hover {
+    background-image: linear-gradient(to bottom right, #a100c9, #510065) !important;
+    color: black !important;
+}
+
+.btn-outline-blue {
+    --bs-btn-color: #009ac9 !important;
+    --bs-btn-border-color: #009ac9 !important;
+    --bs-btn-hover-color: #000 !important;
+    --bs-btn-hover-bg: #009ac9 !important;
+    --bs-btn-hover-border-color: #009ac9 !important;
+    --bs-btn-focus-shadow-rgb: 13, 202, 240 !important;
+    --bs-btn-active-color: #000 !important;
+    --bs-btn-active-bg: #009ac9 !important;
+    --bs-btn-active-border-color: #009ac9 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: #009ac9 !important;
+    --bs-btn-disabled-bg: transparent !important;
+    --bs-btn-disabled-border-color: #009ac9 !important;
+    --bs-gradient: none !important;
+    box-shadow: 0 1px 3px 0 #bd20e4, 0 1px 3px 0 #c61af1 !important;
+}
+
+/* Force gradient on active state */
+.btn-outline-blue:active,
+.btn-outline-blue.active,
+.btn-outline-blue:hover {
+    background-image: linear-gradient(to bottom right, #a100c9, #510065) !important;
+    color: black !important;
+}
+
+.btn-outline-orange {
+    --bs-btn-color: rgb(242, 177, 13) !important;
+    --bs-btn-border-color: rgb(242, 177, 13) !important;
+    --bs-btn-hover-color: #000 !important;
+    --bs-btn-hover-bg: rgb(242, 177, 13) !important;
+    --bs-btn-hover-border-color: rgb(242, 177, 13) !important;
+    --bs-btn-focus-shadow-rgb: 13, 202, 240 !important;
+    --bs-btn-active-color: #000 !important;
+    --bs-btn-active-bg: rgb(242, 177, 13) !important;
+    --bs-btn-active-border-color: rgb(242, 177, 13) !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: rgb(242, 177, 13) !important;
+    --bs-btn-disabled-bg: transparent !important;
+    --bs-btn-disabled-border-color: rgb(242, 177, 13) !important;
+    --bs-gradient: none !important;
+    box-shadow: 0 1px 3px 0 rgb(246, 204, 99), 0 1px 3px 0 rgb(250, 203, 85) !important;
+}
+
+/* Force gradient on active state */
+.btn-outline-orange:active,
+.btn-outline-orange.active,
+.btn-outline-orange:hover {
+    background-image: linear-gradient(to bottom right, rgb(242, 177, 13), rgb(152, 112, 12)) !important;
+    color: black !important;
+}
+
+.btn-outline-purple {
+    --bs-btn-color: rgb(242, 120, 13) !important;
+    --bs-btn-border-color: rgb(242, 120, 13) !important;
+    --bs-btn-hover-color: #000 !important;
+    --bs-btn-hover-bg: rgb(242, 120, 13) !important;
+    --bs-btn-hover-border-color: rgb(242, 120, 13) !important;
+    --bs-btn-focus-shadow-rgb: 13, 202, 240 !important;
+    --bs-btn-active-color: #000 !important;
+    --bs-btn-active-bg: rgb(242, 120, 13) !important;
+    --bs-btn-active-border-color: rgb(242, 120, 13)!important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: rgb(242, 120, 13) !important;
+    --bs-btn-disabled-bg: transparent !important;
+    --bs-btn-disabled-border-color: rgb(242, 120, 13) !important;
+    --bs-gradient: none !important;
+    box-shadow: 0 1px 3px 0 rgb(251, 162, 85), 0 1px 3px 0 rgb(245, 142, 52) !important;
+}
+/* Force gradient on active state */
+.btn-outline-purple:active,
+.btn-outline-purple.active,
+.btn-outline-purple:hover {
+    background-image: linear-gradient(to bottom right, rgb(242, 120, 13), rgb(145, 72, 9)) !important;
+    color: black !important;
+}
+
+.btn-outline-green {
+    --bs-btn-color: #0AC213 !important;
+    --bs-btn-border-color: #0AC213 !important;
+    --bs-btn-hover-color: #000 !important;
+    --bs-btn-hover-bg: #0AC213 !important;
+    --bs-btn-hover-border-color: #0AC213 !important;
+    --bs-btn-focus-shadow-rgb: 13, 202, 240 !important;
+    --bs-btn-active-color: #000 !important;
+    --bs-btn-active-bg: #0AC213 !important;
+    --bs-btn-active-border-color: #0AC213 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: #0AC213 !important;
+    --bs-btn-disabled-bg: transparent !important;
+    --bs-btn-disabled-border-color: #0AC213 !important;
+    --bs-gradient: none !important;
+    box-shadow: 0 1px 3px 0 #57f45f, 0 1px 3px 0 #42f84b !important;
+}
+/* Force gradient on active state */
+.btn-outline-green:active,
+.btn-outline-green.active,
+.btn-outline-green:hover {
+    background-image: linear-gradient(to bottom right, #42f84b, #1e7422) !important;
+    color: black !important;
 }

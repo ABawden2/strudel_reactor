@@ -26,7 +26,7 @@ function DjPad(props) {
                 buttonId: `control-${element}`,
                 buttonName: element,
                 buttonCols: "6",
-                buttonColour: 'outline-info', //`outline-${colours[index]}`,
+                buttonColour: `outline-${colours[index]}`,
                 callBack: props.Proc
             });
             });
