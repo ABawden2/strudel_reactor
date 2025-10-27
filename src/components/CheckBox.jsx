@@ -9,8 +9,13 @@ function CheckBox(props) {
 
      
   useEffect(() => {
-      let value = checked ? props.buttonValue : props.buttonName;
-      props.callBack(props.buttonName, value);
+      let value = props.buttonName;
+      let key = props.buttonValue;
+      if (checked) { 
+        value = props.buttonValue;
+        key = props.buttonName;
+      }
+      props.callBack(key, value);
   }, [checked]);
 
   return (
