@@ -35,6 +35,12 @@ const arpeggiator2 = [
 "{d5 bb4 g4 d4 bb3 g3 d4 bb3 eb3 d3 bb2 eb2}%16",
 ]
 
+const arpeggiator3 = [
+"{a1 a4 a3 a2 a1 a1}%8",
+"{f1 f4 f3 f2 f1 f1}%8",
+"{d4 g4 d4 eb3 d3 bb2}%8",
+]
+
 
 const pattern = 0
 const bass = 0
@@ -50,7 +56,7 @@ note(pick(basslines, bass))
 
 
 main_arp: 
-note(pick(arpeggiator1, "<0 1 2 3>/2"))
+note(pick(arpeggiator1, "<0 1 2 3>/1"))
 .sound("supersaw")
 .lpf(300)
 .adsr("0:0:.5:.1")
