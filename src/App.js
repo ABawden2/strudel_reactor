@@ -14,6 +14,8 @@ import buttonList from './assets/buttonList.json';
 import DjPad from './components/DjPad';
 import ProcessTextarea from './components/ProcessTextarea';
 import groupOptions from './assets/patternOptions.json';
+import ReactLogo from './logo.svg';
+import '../src/assets/controls.css';
 
 
 const handleD3Data = (event) => {
@@ -132,14 +134,26 @@ useEffect(() => {
 }, [processText]);
 
 
+
 // .lpf controls the volume of main arf and base
 return (
     <div>
-        <h2>Strudel Demo</h2>
+        <div> 
+          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"> 
+            <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto"> 
+              <img src={ReactLogo} alt="Image of react logo" width="60" />
+              <h2 class="fs-4">React Strudel Assignment</h2> 
+            </div> 
+            {/* <ul class="nav nav-pills"> 
+              <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li> 
+            </ul> */}
+          </header>
+        </div>
+
         <main>
 
             <div className="container-fluid">
-                <div className="row">
+                <div className="row mb-4">
                     <div className="col-md-7" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" />
@@ -158,7 +172,7 @@ return (
                     </div>
                 </div>
             </div>
-            <canvas id="roll"></canvas>
+            <canvas id="roll" hidden></canvas>
         </main >
     </div >
 );

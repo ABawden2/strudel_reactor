@@ -8,15 +8,17 @@ import RadioGroup from './RadioGroup';
 import Select from './Select';
 import Range from './Range';
 
+
 function DjPad(props) {
     const [checkBoxList, setCheckBoxList] = useState([])
 
     React.useEffect(() => {
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
         let transformedElements = [];
+        let colours = ['purple', 'orange', 'green', 'pink']
         // TODO: look into this as it shouldn't need this as it should only be entering this useEffect once.
         if (matchedElements) {
-            matchedElements.forEach((element) => {
+            matchedElements.forEach((element, index) => {
             element = element.trim().replace('\n', '');
             transformedElements.push({
                 checked: "false",
@@ -24,7 +26,7 @@ function DjPad(props) {
                 buttonId: `control-${element}`,
                 buttonName: element,
                 buttonCols: "6",
-                buttonColour: "outline-primary",
+                buttonColour: 'outline-info', //`outline-${colours[index]}`,
                 callBack: props.Proc
             });
             });
@@ -35,9 +37,11 @@ function DjPad(props) {
     // Empty array will stop it from continusly looping, and makes it almost just loop once.
     console.log(props)
   return (
-    <Container>
+    <Container className='highlight-container'>
         <Row>
-            <Range callBack={props.callBack}/>
+            <Col xs={12} md={12} lg={12} className='mb-3'>
+                <Range callBack={props.callBack}/>
+            </Col>
             <Col xs={12} md={6} lg={6}>
                 <Select callBack={props.callBack}/>
 
@@ -51,7 +55,7 @@ function DjPad(props) {
                 })}
             </Col>
             <Col xs={12} md={6} lg={6}>
-                <Row className={'mt-4 g-' + props.rowGap}>
+                <Row className={'g-' + props.rowGap}>
                     {Object.values(checkBoxList).map((button) => {
                         return (
                         <CheckBox
