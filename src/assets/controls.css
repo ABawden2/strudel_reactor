@@ -8,6 +8,11 @@
     box-shadow: 0 1px 2px 0 rgb(2 7 49 / 79%), 0 1px 2px 0 rgb(7 16 98);
 }
 
+.speed-slider {
+    width: 100%;
+    accent-color: rgb(53, 12, 200);
+}
+
 
 .select-option {
     /* background: black; */
@@ -48,7 +53,7 @@
     --bs-btn-disabled-bg: transparent !important;
     --bs-btn-disabled-border-color: #a100c9 !important;
     --bs-gradient: none !important;
-    box-shadow: 0 1px 3px 0 #bd20e4, 0 1px 3px 0 #c61af1 !important;
+    box-shadow: 0 1px 2px 0 #bd20e4, 0 1px 2px 0 #c61af1 !important;
 }
 
 /* Force gradient on active state */
@@ -60,30 +65,30 @@
 }
 
 .btn-outline-blue {
-    --bs-btn-color: #009ac9 !important;
-    --bs-btn-border-color: #009ac9 !important;
+    --bs-btn-color: rgb(13, 135, 242) !important;
+    --bs-btn-border-color: rgb(13, 135, 242) !important;
     --bs-btn-hover-color: #000 !important;
-    --bs-btn-hover-bg: #009ac9 !important;
-    --bs-btn-hover-border-color: #009ac9 !important;
+    --bs-btn-hover-bg: rgb(13, 135, 242) !important;
+    --bs-btn-hover-border-color: rgb(13, 135, 242) !important;
     --bs-btn-focus-shadow-rgb: 13, 202, 240 !important;
     --bs-btn-active-color: #000 !important;
-    --bs-btn-active-bg: #009ac9 !important;
-    --bs-btn-active-border-color: #009ac9 !important;
+    --bs-btn-active-bg: rgb(13, 135, 242) !important;
+    --bs-btn-active-border-color: rgb(13, 135, 242) !important;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-    --bs-btn-disabled-color: #009ac9 !important;
+    --bs-btn-disabled-color: rgb(13, 135, 242) !important;
     --bs-btn-disabled-bg: transparent !important;
-    --bs-btn-disabled-border-color: #009ac9 !important;
+    --bs-btn-disabled-border-color: rgb(13, 135, 242) !important;
     --bs-gradient: none !important;
-    box-shadow: 0 1px 3px 0 #bd20e4, 0 1px 3px 0 #c61af1 !important;
+    box-shadow: 0 1px 1px 0 rgb(13, 135, 242), 0 1px 1px 0 rgb(29, 90, 244) !important;
 }
 
 /* Force gradient on active state */
-.btn-outline-blue:active,
+/* .btn-outline-blue:active,
 .btn-outline-blue.active,
 .btn-outline-blue:hover {
-    background-image: linear-gradient(to bottom right, #a100c9, #510065) !important;
+    background-image: linear-gradient(to bottom right, rgb(13, 135, 242), rgb(13, 78, 242)) !important;
     color: black !important;
-}
+} */
 
 .btn-outline-orange {
     --bs-btn-color: rgb(242, 177, 13) !important;
@@ -100,7 +105,7 @@
     --bs-btn-disabled-bg: transparent !important;
     --bs-btn-disabled-border-color: rgb(242, 177, 13) !important;
     --bs-gradient: none !important;
-    box-shadow: 0 1px 3px 0 rgb(246, 204, 99), 0 1px 3px 0 rgb(250, 203, 85) !important;
+    box-shadow: 0 1px 2px 0 rgb(246, 204, 99), 0 1px 2px 0 rgb(250, 203, 85) !important;
 }
 
 /* Force gradient on active state */
@@ -126,7 +131,7 @@
     --bs-btn-disabled-bg: transparent !important;
     --bs-btn-disabled-border-color: rgb(242, 120, 13) !important;
     --bs-gradient: none !important;
-    box-shadow: 0 1px 3px 0 rgb(251, 162, 85), 0 1px 3px 0 rgb(245, 142, 52) !important;
+    box-shadow: 0 1px 2px 0 rgb(251, 162, 85), 0 1px 2px 0 rgb(245, 142, 52) !important;
 }
 /* Force gradient on active state */
 .btn-outline-purple:active,
@@ -151,7 +156,7 @@
     --bs-btn-disabled-bg: transparent !important;
     --bs-btn-disabled-border-color: #0AC213 !important;
     --bs-gradient: none !important;
-    box-shadow: 0 1px 3px 0 #57f45f, 0 1px 3px 0 #42f84b !important;
+    box-shadow: 0 1px 2px 0 #57f45f, 0 1px 2px 0 #42f84b !important;
 }
 /* Force gradient on active state */
 .btn-outline-green:active,
@@ -160,3 +165,27 @@
     background-image: linear-gradient(to bottom right, #42f84b, #1e7422) !important;
     color: black !important;
 }
+
+.success-green {
+    box-shadow: 0 1px 2px 0 #33da8c, 0 1px 2px 0 #0e643c !important;
+}
+/* Force gradient on active state */
+.success-green:active,
+.success-green.active,
+.success-green:hover {
+    background-image: linear-gradient(to bottom right, #198754, #157247) !important;
+    color: black !important;
+}
+
+.danger-red {
+    box-shadow: 0 1px 2px 0 #dc3545, 0 1px 2px 0 #72121c !important;
+}
+/* Force gradient on active state */
+.danger-red:active,
+.danger-red.active,
+.danger-red:hover {
+    background-image: linear-gradient(to bottom right, #dc3545, #921a26) !important;
+    color: black !important;
+}
+
+

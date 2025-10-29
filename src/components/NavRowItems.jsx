@@ -13,6 +13,7 @@ function NavRowItems (props) {
                     buttonType = {button.buttonType}
                     buttonCols = {button.buttonCols}
                     buttonColour = {button.colour}
+                    addClass = {button.addClass}
                     callBack = {props.functions[button.callBack]}
                 />
             )})}

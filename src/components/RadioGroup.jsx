@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { ToggleButton } from 'react-bootstrap';
+import "../assets/controls.css";
 
 function RadioGroup(props) {
     const [radioValue, setRadioValue] = useState('0');

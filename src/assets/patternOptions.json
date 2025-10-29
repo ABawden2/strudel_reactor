@@ -5,21 +5,21 @@
       "buttonId": "patternOptions",
       "buttonName": "1",
       "buttonGroupName": "patternOptions",
-      "buttonColour": "outline-primary"
+      "buttonColour": "outline-blue"
     },
     {
       "buttonValue": "1", 
       "buttonId": "patternOptions2",
       "buttonName": "2",
       "buttonGroupName": "patternOptions",
-      "buttonColour": "outline-primary"
+      "buttonColour": "outline-blue"
     },
     {
       "buttonValue": "2", 
       "buttonId": "patternOptions3",
       "buttonName": "3",
       "buttonGroupName": "patternOptions",
-      "buttonColour": "outline-primary"
+      "buttonColour": "outline-blue"
     }
   ],
   "bass": [
@@ -28,14 +28,14 @@
       "buttonId": "baseOptions",
       "buttonName": "1",
       "buttonGroupName": "baseOptions",
-      "buttonColour": "outline-primary"
+      "buttonColour": "outline-blue"
     },
     {
       "buttonValue": "1", 
       "buttonId": "baseOptions2",
       "buttonName": "2",
       "buttonGroupName": "baseOptions",
-      "buttonColour": "outline-primary"
+      "buttonColour": "outline-blue"
     }
   ]
 }
