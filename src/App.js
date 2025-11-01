@@ -16,10 +16,10 @@ import ProcessTextarea from './components/ProcessTextarea';
 import groupOptions from './assets/patternOptions.json';
 import ReactLogo from './logo.svg';
 import '../src/assets/controls.css';
-
+import Graph from './components/Graph';
 
 const handleD3Data = (event) => {
-    console.log(event.detail);
+  console.log(event.detail);
 };
 
 // drum structure
@@ -97,7 +97,7 @@ export default function StrudelDemo() {
 useEffect(() => {
 
     if (!hasRun.current) {
-      console.log(handleD3Data)
+      // console.log(handleD3Data)
         document.addEventListener("d3Data", handleD3Data);
         console_monkey_patch();
         hasRun.current = true;
@@ -134,7 +134,7 @@ useEffect(() => {
 }, [processText]);
 
 
-
+// console.log('getD3Data()', getD3Data())
 // .lpf controls the volume of main arf and base
 return (
     <div>
@@ -159,8 +159,11 @@ return (
                         <div id="output" />
                     </div>
                     {/* When graph comes in hide this element using the attribute hidden or something else. */}
-                    <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }} hidden>
                         <ProcessTextarea defaultValue={processText} onChange={(event) => setProcessText(event.target.value)}/>
+                    </div>
+                    <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <Graph />
                     </div>
                 </div>
                 <div className="row">
