@@ -17,8 +17,14 @@ function RadioGroup(props) {
     }
     
     useEffect(() => {
-        console.log(groupKey, radioValue, oldValue)
-        props.callBack(`${groupKey} = ${oldValue}`, `${groupKey} = ${radioValue}`);
+        if (groupKey === 'arpeggiatorPattern') {
+            let arpeggiatorOption = 'arpeggiator' + oldValue;
+            // console.log(arpeggiatorOption)
+            props.callBack(new RegExp(`(${arpeggiatorOption},)`, 'g'), 'arpeggiator' + radioValue + ',');
+        } else {
+            // console.log(groupKey, radioValue, oldValue)
+            props.callBack(`${groupKey} = ${oldValue}`, `${groupKey} = ${radioValue}`);
+        }
     }, [radioValue]);
     // Will run once initallially and then every time the radioValue is run or props.callback is called.
 

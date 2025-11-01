@@ -7,7 +7,8 @@
       "buttonCols": "6",
       "colour": "success",
       "callBack": "Start",
-      "addClass": "success-green"
+      "addClass": "success-green",
+      "margin": ""
     },
     {
       "buttonId": "stop",
@@ -16,7 +17,8 @@
       "buttonCols": "6",
       "colour": "success",
       "callBack": "Stop",
-      "addClass": "success-green"
+      "addClass": "success-green",
+      "margin": ""
     },
     {
       "buttonId": "save",
@@ -25,7 +27,8 @@
       "buttonCols": "6",
       "colour": "success",
       "callBack": "SaveJson",
-      "addClass": "success-green"
+      "addClass": "success-green",
+      "margin": ""
     },
     {
       "buttonId": "load",
@@ -34,36 +37,8 @@
       "buttonCols": "6",
       "colour": "success",
       "callBack": "LoadJson",
-      "addClass": "success-green"
-    },
-    {
-      "buttonId": "delate",
-      "buttonName": "Delate Json",
-      "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "danger",
-      "callBack": "DeleteJsonData",
-      "addClass": "danger-red"
-    }
-  ],
-  "previewControls": [
-    {
-      "buttonId": "process",
-      "buttonName": "Preprocess",
-      "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "success",
-      "callBack": "Process",
-      "addClass": "success-green"
-    },
-    {
-      "buttonId": "process_play",
-      "buttonName": "Proc & Play",
-      "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "success",
-      "callBack": "ProcAndPlay",
-      "addClass": "success-green"
+      "addClass": "success-green",
+      "margin": ""
     }
   ]
 }

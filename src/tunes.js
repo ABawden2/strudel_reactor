@@ -21,21 +21,21 @@ const basslines = [
   "[[eb1, eb2]!16 [bb2, bb1]!16 [g2, g1]!16 [f2, f1]!4 [bb1, bb2]!4 [eb1, eb2]!4 [f1, f2]!4]/8"
 ]
 
-const arpeggiator1 = [
+const arpeggiator0 = [
 "{d4 bb3 eb3 d3 bb2 eb2}%16",
 "{c4 bb3 f3 c3 bb2 f2}%16",
 "{d4 bb3 g3 d3 bb2 g2}%16",
 "{c4 bb3 f3 c3 bb2 f2}%16",
 ]
 
-const arpeggiator2 = [
+const arpeggiator1 = [
 "{d4 bb3 eb3 d3 bb2 eb2}%16",
 "{c4 bb3 f3 c3 bb2 f2}%16",
 "{d4 bb3 g3 d3 bb2 g2}%16",
 "{d5 bb4 g4 d4 bb3 g3 d4 bb3 eb3 d3 bb2 eb2}%16",
 ]
 
-const arpeggiator3 = [
+const arpeggiator2 = [
 "{a1 a4 a3 a2 a1 a1}%8",
 "{f1 f4 f3 f2 f1 f1}%8",
 "{d4 g4 d4 eb3 d3 bb2}%8",
@@ -44,6 +44,7 @@ const arpeggiator3 = [
 
 const pattern = 0
 const bass = 0
+const brumPattern = 0
 
 bassline:
 note(pick(basslines, bass))
@@ -53,10 +54,10 @@ note(pick(basslines, bass))
 .lpf(700)
 .room(0.4)
 .postgain(pick(gain_patterns, pattern))
-
+.log()
 
 main_arp: 
-note(pick(arpeggiator1, "<0 1 2 3>/1"))
+note(pick(arpeggiator0, "<0 1 2 3>/1"))
 .sound("supersaw")
 .lpf(300)
 .adsr("0:0:.5:.1")
@@ -71,7 +72,7 @@ stack(
   .postgain(6)
   .pcurve(2)
   .pdec(1)
-  .struct(pick(drum_structure, pattern)),
+  .struct(pick(drum_structure, brumPattern)),
 
   s("sh").struct("[x!3 ~!2 x!10 ~]")
   .postgain(0.5).lpf(7000)

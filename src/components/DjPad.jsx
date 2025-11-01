@@ -30,31 +30,31 @@ function DjPad(props) {
                 callBack: props.Proc
             });
             });
-            // console.log(transformedElements)
             setCheckBoxList(transformedElements);
         }
     }, [])
     // Empty array will stop it from continusly looping, and makes it almost just loop once.
-    console.log(props)
   return (
     <Container className='highlight-container'>
         <Row>
             <Col xs={12} md={12} lg={12} className='mb-3'>
-                <Range callBack={props.callBack}/>
+                <Range key={'range'} callBack={props.callBack}/>
             </Col>
+            {/* <Col xs={12} md={6} lg={6}>
+                <Select key={'selectInput'} callBack={props.callBack}/>
+            </Col> */}
             <Col xs={12} md={6} lg={6}>
-                <Select callBack={props.callBack}/>
-
-                {Object.keys(props.groupOptions).map((option) => {
-                    return(
+                {Object.values(props.groupOptions).map((option, index) => {
+                    let optionKey = Object.keys(props.groupOptions)[index];
+                    return (
                         <Row>
-                            {option.slice(0,1).toUpperCase() + option.slice(1,)} Options
-                            <RadioGroup patternOptions={props.groupOptions[option]} optionKey={option} callBack={props.callBack}/>
+                           <p className="mt-2 mb-1">{option.name}</p>
+                            <RadioGroup key={option.id} patternOptions={option.values} optionKey={optionKey} callBack={props.callBack}/>
                         </Row>
                     )
                 })}
             </Col>
-            <Col xs={12} md={6} lg={6}>
+            {/* <Col xs={12} md={6} lg={6}>
                 <Row className={'g-' + props.rowGap}>
                     {Object.values(checkBoxList).map((button) => {
                         return (
@@ -70,7 +70,7 @@ function DjPad(props) {
                         />
                     )})}
                 </Row>
-            </Col>
+            </Col> */}
         </Row>
     </Container>
   );

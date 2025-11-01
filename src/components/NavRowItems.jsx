@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 
 function NavRowItems (props) {
     return (
-        <Row className={'g-' + props.rowGap}>
+        <Row className={'g-' + props.rowGap + " " + props.navButtoncontrols[0].margin}>
             {Object.values(props.navButtoncontrols).map((button) => {
                 return (
                 <ButtonCreator

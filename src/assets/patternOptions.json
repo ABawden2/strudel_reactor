@@ -1,41 +1,103 @@
 {
-  "pattern": [
-    {
-      "buttonValue": "0", 
-      "buttonId": "patternOptions",
-      "buttonName": "1",
-      "buttonGroupName": "patternOptions",
-      "buttonColour": "outline-blue"
-    },
-    {
-      "buttonValue": "1", 
-      "buttonId": "patternOptions2",
-      "buttonName": "2",
-      "buttonGroupName": "patternOptions",
-      "buttonColour": "outline-blue"
-    },
-    {
-      "buttonValue": "2", 
-      "buttonId": "patternOptions3",
-      "buttonName": "3",
-      "buttonGroupName": "patternOptions",
-      "buttonColour": "outline-blue"
-    }
-  ],
-  "bass": [
-    {
-      "buttonValue": "0", 
-      "buttonId": "baseOptions",
-      "buttonName": "1",
-      "buttonGroupName": "baseOptions",
-      "buttonColour": "outline-blue"
-    },
-    {
-      "buttonValue": "1", 
-      "buttonId": "baseOptions2",
-      "buttonName": "2",
-      "buttonGroupName": "baseOptions",
-      "buttonColour": "outline-blue"
-    }
-  ]
+  "pattern": {
+    "id": "patternOptions",
+    "name": "Pattern",
+    "values": [
+      {
+        "buttonValue": "0", 
+        "buttonId": "patternOptions",
+        "buttonName": "1",
+        "buttonGroupName": "patternOptions",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "1", 
+        "buttonId": "patternOptions2",
+        "buttonName": "2",
+        "buttonGroupName": "patternOptions",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "2", 
+        "buttonId": "patternOptions3",
+        "buttonName": "3",
+        "buttonGroupName": "patternOptions",
+        "buttonColour": "outline-blue"
+      }
+    ]
+  },
+  "bass": {
+    "id": "bassOptions",
+    "name": "Bass",
+    "values": [
+      {
+        "buttonValue": "0", 
+        "buttonId": "baseOptions",
+        "buttonName": "1",
+        "buttonGroupName": "baseOptions",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "1", 
+        "buttonId": "baseOptions2",
+        "buttonName": "2",
+        "buttonGroupName": "baseOptions",
+        "buttonColour": "outline-blue"
+      }
+    ]
+  },
+  "brumPattern": {
+    "id": "brumOptions",
+    "name": "Brum",
+    "values": [
+      {
+        "buttonValue": "0", 
+        "buttonId": "brumPattern",
+        "buttonName": "1",
+        "buttonGroupName": "brumPattern",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "1", 
+        "buttonId": "brumPattern2",
+        "buttonName": "2",
+        "buttonGroupName": "brumPattern",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "2", 
+        "buttonId": "brumPattern3",
+        "buttonName": "3",
+        "buttonGroupName": "brumPattern",
+        "buttonColour": "outline-blue"
+      }
+    ]
+  },
+  "arpeggiatorPattern": {
+    "id": "arpeggiatorOptions",
+    "name": "Arpeggiator",
+    "values": [
+      {
+        "buttonValue": "0", 
+        "buttonId": "arpeggiatorPattern",
+        "buttonName": "1",
+        "buttonGroupName": "arpeggiatorPattern",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "1", 
+        "buttonId": "arpeggiatorPattern2",
+        "buttonName": "2",
+        "buttonGroupName": "arpeggiatorPattern",
+        "buttonColour": "outline-blue"
+      },
+      {
+        "buttonValue": "2", 
+        "buttonId": "arpeggiatorPattern3",
+        "buttonName": "3",
+        "buttonGroupName": "arpeggiatorPattern",
+        "buttonColour": "outline-blue"
+      }
+    ]
+  }
 }
