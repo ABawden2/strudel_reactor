@@ -2,40 +2,40 @@
   "mainControls": [
     {
       "buttonId": "play",
-      "buttonName": "Play",
+      "buttonName": "play",
       "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "success",
+      "buttonCols": "3",
+      "colour": "secondary",
       "callBack": "Start",
       "addClass": "success-green",
       "margin": ""
     },
     {
       "buttonId": "stop",
-      "buttonName": "Stop",
+      "buttonName": "stop",
       "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "success",
+      "buttonCols": "3",
+      "colour": "secondary",
       "callBack": "Stop",
       "addClass": "success-green",
       "margin": ""
     },
     {
       "buttonId": "save",
-      "buttonName": "Save Data",
+      "buttonName": "upload",
       "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "success",
+      "buttonCols": "3",
+      "colour": "secondary",
       "callBack": "SaveJson",
       "addClass": "success-green",
       "margin": ""
     },
     {
       "buttonId": "load",
-      "buttonName": "Load Data",
+      "buttonName": "download",
       "buttonType": "button",
-      "buttonCols": "6",
-      "colour": "success",
+      "buttonCols": "3",
+      "colour": "secondary",
       "callBack": "LoadJson",
       "addClass": "success-green",
       "margin": ""

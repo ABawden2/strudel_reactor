@@ -115,7 +115,7 @@ export default function Graph() {
         // <div className="App container">
         //     <label htmlFor="exampleFormControlTextarea1" className="form-label">RNG Output: {rngNumber}</label>
         //     <div className="row">
-                <svg width="100%" height="100%" class="border border-primary rounded p-2"></svg>
+                <svg width="100%" height="100%" class="rounded success-blue p-2"></svg>
         //     </div>
         // </div>
     )

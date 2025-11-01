@@ -34,45 +34,51 @@ function DjPad(props) {
         }
     }, [])
     // Empty array will stop it from continusly looping, and makes it almost just loop once.
+
   return (
-    <Container className='highlight-container'>
-        <Row>
-            <Col xs={12} md={12} lg={12} className='mb-3'>
-                <Range key={'range'} callBack={props.callBack}/>
-            </Col>
-            {/* <Col xs={12} md={6} lg={6}>
-                <Select key={'selectInput'} callBack={props.callBack}/>
-            </Col> */}
-            <Col xs={12} md={6} lg={6}>
-                {Object.values(props.groupOptions).map((option, index) => {
-                    let optionKey = Object.keys(props.groupOptions)[index];
+    <>
+    <div className="col-md-5">
+        <Container className='highlight-container'>
+            <Row className={'g-' + props.rowGap}>
+                {Object.values(checkBoxList).map((button) => {
                     return (
-                        <Row>
-                           <p className="mt-2 mb-1">{option.name}</p>
-                            <RadioGroup key={option.id} patternOptions={option.values} optionKey={optionKey} callBack={props.callBack}/>
-                        </Row>
-                    )
-                })}
-            </Col>
-            {/* <Col xs={12} md={6} lg={6}>
-                <Row className={'g-' + props.rowGap}>
-                    {Object.values(checkBoxList).map((button) => {
-                        return (
-                        <CheckBox
-                            key = {button.buttonId}
-                            buttonId = {button.buttonId}
-                            buttonName = {button.buttonName}
-                            buttonValue = {button.buttonValue}
-                            checked = {button.checked}
-                            buttonCols = {button.buttonCols}
-                            buttonColour = {button.buttonColour}
-                            callBack = {props.callBack}
-                        />
-                    )})}
-                </Row>
-            </Col> */}
-        </Row>
-    </Container>
+                    <CheckBox
+                        key = {button.buttonId}
+                        buttonId = {button.buttonId}
+                        buttonName = {button.buttonName}
+                        buttonValue = {button.buttonValue}
+                        checked = {button.checked}
+                        buttonCols = {button.buttonCols}
+                        buttonColour = {button.buttonColour}
+                        callBack = {props.callBack}
+                    />
+                )})}
+            </Row>
+        </Container>
+    </div>
+    <div className="col-md-7">
+        <Container className='highlight-container'>
+            <Row>
+                <Col xs={12} md={12} lg={12} className='mb-0'>
+                    <Range key={'range'} callBack={props.callBack}/>
+                </Col>
+                <Col xs={12} md={12} lg={12}>
+                    <Row>
+                        {Object.values(props.groupOptions).map((option, index) => {
+                            let optionKey = Object.keys(props.groupOptions)[index];
+                            return (
+                                <Col xs={12} md={6} lg={6}>
+                                    <p className="mt-2 mb-1">{option.name}</p>
+                                    <RadioGroup key={option.id} patternOptions={option.values} optionKey={optionKey} callBack={props.callBack}/>
+                                </Col>
+                            )
+                        })}
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
+    </div>
+    </>
   );
 }
 

@@ -167,12 +167,10 @@ return (
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-4">
-                        <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
-                    </div>
-                    <div className="col-md-8">
-                        <DjPad rowGap="2" groupOptions={groupOptions} callBack={ProcEdit}/>
-                    </div>
+                  <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
+                </div>
+                <div className="row">
+                  <DjPad rowGap="2" groupOptions={groupOptions} callBack={ProcEdit}/>
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>

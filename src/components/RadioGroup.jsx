@@ -29,7 +29,7 @@ function RadioGroup(props) {
     // Will run once initallially and then every time the radioValue is run or props.callback is called.
 
   return (
-    <ButtonGroup>
+    <ButtonGroup style={{"width": 100 + "%"}}>
         {Object.values(props.patternOptions).map((pattern) => {
             return (
                 <ToggleButton
