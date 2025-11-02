@@ -18,10 +18,6 @@ import ReactLogo from './logo.svg';
 import '../src/assets/controls.css';
 import Graph from './components/Graph';
 
-const handleD3Data = (event) => {
-  console.log(event.detail);
-};
-
 // drum structure
 
 
@@ -30,8 +26,12 @@ export default function StrudelDemo() {
   let globalEditor = useRef(null);
   const hasRun = useRef(false);
   const [processText, setProcessText] = useState(stranger_tune);
-
+  const [d3Data, setD3Data] = useState([]);
  
+  function handleD3Data(event) {
+    setD3Data(event.detail[event.detail.length - 1]);
+  };
+
   function Proc() {
     if (globalEditor.current) {
       globalEditor.current.setCode(processText);
@@ -163,7 +163,7 @@ return (
                         <ProcessTextarea defaultValue={processText} onChange={(event) => setProcessText(event.target.value)}/>
                     </div>
                     <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <Graph />
+                        <Graph value={d3Data}/>
                     </div>
                 </div>
                 <div className="row">

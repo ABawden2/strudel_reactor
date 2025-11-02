@@ -2,28 +2,24 @@ import { useState, useEffect } from "react"
 import * as d3 from "d3";
 
 
-export default function Graph() {
+export default function Graph(props) {
     const [rngNumber, setRngNumber] = useState(0);
     const [rngArray, setRngArray] = useState([]);
     const maxItems = 50;
     const timeOut = 100;
-    const maxValue = 1; // Pretending to be gain so its normally between 0 and 1
+    const maxValue = 0.7; // Pretending to be gain so its normally between 0 and 1
+
+    // console.log("props.value graph: ", props.value, typeof(props.value));
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            //setRngNumber(Math.floor(Math.random() * maxValue));
-            let val = Math.random()
-            setRngNumber(`"3/8 -> 7/16: note:d4 s:supersaw
-            cutoff:300 attack:0 decay:0 sustain:0.5 release:0.1
-            room:0.6 lpenv:3.3 gain:${val} duration:0.10714285714285714
-            background-colour: black; colour:white;border-radius:15px"`);
-        }, timeOut);
-
-        return () => clearInterval(interval);
-    }, []);
+            // console.log(props.value)
+            // console.log("getting in here", props.value)
+            setRngNumber(props.value);
+    }, [props.value]);
 
     useEffect(() => {
         let tempArray = [...rngArray, rngNumber]
+        // console.log("tempArray", tempArray)
         if (tempArray.length > maxItems) { tempArray.shift() }
         setRngArray(tempArray)
     }, [rngNumber]);
@@ -40,7 +36,7 @@ export default function Graph() {
         h = h - 25
 
         // Calculating graph bar dimentions
-        const barMargin = 10;
+        // const barMargin = 10;
         const barWidth = w / rngArray.length;
 
         // Calculate yScale
@@ -74,6 +70,7 @@ export default function Graph() {
             .attr("offset", function (d) { return d.offset; })
             .attr("stop-color", function (d) { return d.color; });
 
+        console.log("rngArray: ", rngArray)
         // Draw lines
         chartGroup
             .append('path')
@@ -97,13 +94,14 @@ export default function Graph() {
 
     // Need to change this later to do it "properly"
     function LogToNum(input) {
-
-        if (!input) { return 0 };
+        // console.log("input", input)
+        if (!input || input.length === 0) { return 0 };
         var stringArray = input.split(/(\s+)/);
-
         for (const item of stringArray) {
-            if (item.startsWith('gain:')) {
+            // console.log("item: ", item)
+            if (item.startsWith('room:')) {
                 let val = item.substring(5)
+                // console.log('val:', val)
                 return Number(val)
             }
         }
@@ -112,11 +110,6 @@ export default function Graph() {
     }
 
     return (
-        // <div className="App container">
-        //     <label htmlFor="exampleFormControlTextarea1" className="form-label">RNG Output: {rngNumber}</label>
-        //     <div className="row">
-                <svg width="100%" height="100%" class="rounded success-blue p-2"></svg>
-        //     </div>
-        // </div>
+        <svg width="100%" height="100%" class="rounded success-blue p-2"></svg>
     )
 }

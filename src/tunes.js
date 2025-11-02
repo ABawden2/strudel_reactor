@@ -44,7 +44,7 @@ const arpeggiator2 = [
 
 const pattern = 0
 const bass = 0
-const brumPattern = 0
+const drumPattern = 0
 
 bassline:
 note(pick(basslines, bass))
@@ -54,7 +54,6 @@ note(pick(basslines, bass))
 .lpf(700)
 .room(0.4)
 .postgain(pick(gain_patterns, pattern))
-.log()
 
 main_arp: 
 note(pick(arpeggiator0, "<0 1 2 3>/1"))
@@ -72,7 +71,7 @@ stack(
   .postgain(6)
   .pcurve(2)
   .pdec(1)
-  .struct(pick(drum_structure, brumPattern)),
+  .struct(pick(drum_structure, drumPattern)),
 
   s("sh").struct("[x!3 ~!2 x!10 ~]")
   .postgain(0.5).lpf(7000)
@@ -102,6 +101,6 @@ stack(
 )
 //Remixed and reproduced from Algorave Dave's code found here: https://www.youtube.com/watch?v=ZCcpWzhekEY
 // all(x => x.gain(mouseX.range(0,1)))
-// all(x => x.log())
+all(x => x.log())
 
 // @version 1.2`;
