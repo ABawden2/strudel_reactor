@@ -15,7 +15,7 @@ function DjPad(props) {
     React.useEffect(() => {
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
         let transformedElements = [];
-        let colours = ['purple', 'orange', 'green', 'pink']
+        let colours = ['purple', 'orange', 'pink', 'green']
         // TODO: look into this as it shouldn't need this as it should only be entering this useEffect once.
         if (matchedElements) {
             matchedElements.forEach((element, index) => {
