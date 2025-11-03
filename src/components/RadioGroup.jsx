@@ -17,12 +17,11 @@ function RadioGroup(props) {
     }
     
     useEffect(() => {
+        // Depending on the group pass in different information into the callback method.
         if (groupKey === 'arpeggiatorPattern') {
             let arpeggiatorOption = 'arpeggiator' + oldValue;
-            // console.log(arpeggiatorOption)
             props.callBack(new RegExp(`(${arpeggiatorOption},)`, 'g'), 'arpeggiator' + radioValue + ',');
         } else {
-            // console.log(groupKey, radioValue, oldValue)
             props.callBack(`${groupKey} = ${oldValue}`, `${groupKey} = ${radioValue}`);
         }
     }, [radioValue]);

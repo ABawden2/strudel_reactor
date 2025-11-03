@@ -31,14 +31,6 @@ function Range(props) {
           step={10}
           onChange={handleSliderChange}
           className="speed-slider" />
-        {/* <Form.Range 
-          id="sliderId"
-          value={sliderValue}
-          min={50}
-          max={170}
-          step={10}
-          onChange={handleSliderChange}
-          className="custom-slider"/> */}
         </Col>
       </Row>
     </>

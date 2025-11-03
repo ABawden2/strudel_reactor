@@ -18,8 +18,6 @@ import ReactLogo from './logo.svg';
 import '../src/assets/controls.css';
 import Graph from './components/Graph';
 
-// drum structure
-
 
 export default function StrudelDemo() {
 
@@ -60,22 +58,6 @@ export default function StrudelDemo() {
     }
   }
 
-
-  // Done automatically so there is no point for these buttons.
-  // TODO: Remove later!!
-  function Process() {
-    if (globalEditor.current) {
-      Proc()
-    }
-  }
-
-  function ProcAndPlay() {
-    if (globalEditor.current) {
-      Proc()
-      globalEditor.current.evaluate()
-    }
-  }
-
   function SaveJson() {
     if (globalEditor.current) {
       console.log('save')
@@ -94,49 +76,44 @@ export default function StrudelDemo() {
     }
   }
 
-useEffect(() => {
-
+  useEffect(() => {
     if (!hasRun.current) {
-      // console.log(handleD3Data)
-        document.addEventListener("d3Data", handleD3Data);
-        console_monkey_patch();
-        hasRun.current = true;
-        //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
-            //init canvas
-            const canvas = document.getElementById('roll');
-            canvas.width = canvas.width * 2;
-            canvas.height = canvas.height * 2;
-            const drawContext = canvas.getContext('2d');
-            const drawTime = [-2, 2]; // time window of drawn haps
-            globalEditor.current = new StrudelMirror({
-                defaultOutput: webaudioOutput,
-                getTime: () => getAudioContext().currentTime,
-                transpiler,
-                root: document.getElementById('editor'),
-                drawTime,
-                onDraw: (haps, time) => drawPianoroll({ haps, time, ctx: drawContext, drawTime, fold: 0 }),
-                prebake: async () => {
-                    initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
-                    const loadModules = evalScope(
-                        import('@strudel/core'),
-                        import('@strudel/draw'),
-                        import('@strudel/mini'),
-                        import('@strudel/tonal'),
-                        import('@strudel/webaudio'),
-                    );
-                    await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
-                },
-            });
-        document.getElementById('proc').value = stranger_tune
+      document.addEventListener("d3Data", handleD3Data);
+      console_monkey_patch();
+      hasRun.current = true;
+      //Code copied from example: https://codeberg.org/uzu/strudel/src/branch/main/examples/codemirror-repl
+          //init canvas
+          const canvas = document.getElementById('roll');
+          canvas.width = canvas.width * 2;
+          canvas.height = canvas.height * 2;
+          const drawContext = canvas.getContext('2d');
+          const drawTime = [-2, 2]; // time window of drawn haps
+          globalEditor.current = new StrudelMirror({
+              defaultOutput: webaudioOutput,
+              getTime: () => getAudioContext().currentTime,
+              transpiler,
+              root: document.getElementById('editor'),
+              drawTime,
+              onDraw: (haps, time) => drawPianoroll({ haps, time, ctx: drawContext, drawTime, fold: 0 }),
+              prebake: async () => {
+                  initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
+                  const loadModules = evalScope(
+                      import('@strudel/core'),
+                      import('@strudel/draw'),
+                      import('@strudel/mini'),
+                      import('@strudel/tonal'),
+                      import('@strudel/webaudio'),
+                  );
+                  await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
+              },
+          });
+      document.getElementById('proc').value = stranger_tune
     }
     globalEditor.current.setCode(processText);
+  }, [processText]);
 
-}, [processText]);
 
-
-// console.log('getD3Data()', getD3Data())
-// .lpf controls the volume of main arf and base
-return (
+  return (
     <div>
         <div> 
           <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"> 
@@ -144,14 +121,9 @@ return (
               <img src={ReactLogo} alt="Image of react logo" width="60" />
               <h2 class="fs-4">React Strudel Assignment</h2> 
             </div> 
-            {/* <ul class="nav nav-pills"> 
-              <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li> 
-            </ul> */}
           </header>
         </div>
-
         <main>
-
             <div className="container-fluid">
                 <div className="row mb-4">
                     <div className="col-md-7" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
@@ -167,14 +139,14 @@ return (
                     </div>
                 </div>
                 <div className="row">
-                  <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, Process, ProcAndPlay, SaveJson, LoadJson, DeleteJsonData}}/>
+                  <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, SaveJson, LoadJson, DeleteJsonData}}/>
                 </div>
                 <div className="row">
                   <DjPad rowGap="2" groupOptions={groupOptions} callBack={ProcEdit}/>
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>
-        </main >
-    </div >
-);
+        </main>
+    </div>
+  );
 }

@@ -1,6 +1,6 @@
-import React, { useState, Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import '../assets/button.css';
 import '../assets/controls.css';
 import icons from '../assets/buttonSvg';
 
@@ -13,7 +13,6 @@ function ButtonCreator (props) {
                 type={props.buttonType} 
                 value={props.buttonName} 
                 onClick={props.callBack}
-                // className={props.addClass}
                 style={{ width: 100 + '%' }}
             >
                 {icons[props.buttonName]}

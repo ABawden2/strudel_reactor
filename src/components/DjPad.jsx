@@ -3,9 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import CheckBox from './CheckBox';
-// import RadioButton from './RadioButton';
 import RadioGroup from './RadioGroup';
-import Select from './Select';
 import Range from './Range';
 
 
@@ -13,8 +11,10 @@ function DjPad(props) {
     const [checkBoxList, setCheckBoxList] = useState([])
 
     React.useEffect(() => {
+        // Automatically creating the buttons based on the elements in the tune
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
         let transformedElements = [];
+        // Randomly selecting the colours.
         let colours = ['purple', 'orange', 'pink', 'green']
         // TODO: look into this as it shouldn't need this as it should only be entering this useEffect once.
         if (matchedElements) {

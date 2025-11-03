@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import Col from 'react-bootstrap/Col';
 import '../assets/button.css';
@@ -9,19 +8,15 @@ function CheckBox(props) {
 
      
   useEffect(() => {
-      let value = props.buttonName;
-      let key = props.buttonValue;
-      if (checked) { 
-        value = props.buttonValue;
-        key = props.buttonName;
-      }
-      props.callBack(key, value);
+    // Sets the key and value variable based on if the button is selected/ checked.
+    let value = checked ? props.buttonValue : props.buttonName;
+    let key = checked ? props.buttonName : props.buttonValue;
+    props.callBack(key, value);
   }, [checked]);
 
   return (
      <Col xs={12} md={props.buttonCols} lg={props.buttonCols} className="pad-button-alignment">
       <ToggleButton
-        // className="mb-2"
         id={props.buttonId}
         type="checkbox"
         variant={props.buttonColour}
