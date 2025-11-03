@@ -58,7 +58,7 @@ export default function Graph(props) {
         // Create chartGroup element
         let chartGroup = svg.append('g')
             .classed('chartGroup', true)
-            .attr('transform', `translate(30,3)`);
+            .attr('transform', `translate(30,4)`);
 
 
         // Set gradient
@@ -80,7 +80,7 @@ export default function Graph(props) {
             .attr("offset", function (d) { return d.offset; })
             .attr("stop-color", function (d) { return d.color; });
 
-        console.log("rngArray: ", rngArray)
+        // console.log("rngArray: ", rngArray)
         // Draw lines
         chartGroup
             .append('path')
