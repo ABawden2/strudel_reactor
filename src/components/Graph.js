@@ -9,17 +9,27 @@ export default function Graph(props) {
     const timeOut = 100;
     const maxValue = 0.7; // Pretending to be gain so its normally between 0 and 1
 
-    // console.log("props.value graph: ", props.value, typeof(props.value));
-
+    // Everytime the D3 data is changed reset the number.
     useEffect(() => {
-            // console.log(props.value)
-            // console.log("getting in here", props.value)
             setRngNumber(props.value);
     }, [props.value]);
 
+    // Is this the "proper" way to do it?
+    const LogToNum = (input) => {
+        let number = 0;
+        if (!input || input.length === 0) { return 0 };
+        var stringArray = input.split(/(\s+)/);
+        for (const item of stringArray) {
+            if (item.startsWith('room:')) {
+                let val = item.substring(5);
+                number = Number(val);
+            }
+        }
+        return number;
+    };
+
     useEffect(() => {
         let tempArray = [...rngArray, rngNumber]
-        // console.log("tempArray", tempArray)
         if (tempArray.length > maxItems) { tempArray.shift() }
         setRngArray(tempArray)
     }, [rngNumber]);
@@ -74,7 +84,7 @@ export default function Graph(props) {
         // Draw lines
         chartGroup
             .append('path')
-            .datum(rngArray.map((d) => LogToNum(d)))
+            .datum(rngArray.map((d) => LogToNum(d) ))
             .attr('fill', 'none')
             .attr('stroke', "url(#line-gradient)")
             .attr('stroke-width', 1.5)
@@ -91,23 +101,6 @@ export default function Graph(props) {
             .call(yAxis);
 
     }, [rngArray]);
-
-    // Need to change this later to do it "properly"
-    function LogToNum(input) {
-        // console.log("input", input)
-        if (!input || input.length === 0) { return 0 };
-        var stringArray = input.split(/(\s+)/);
-        for (const item of stringArray) {
-            // console.log("item: ", item)
-            if (item.startsWith('room:')) {
-                let val = item.substring(5)
-                // console.log('val:', val)
-                return Number(val)
-            }
-        }
-
-        return 0;
-    }
 
     return (
         <svg width="100%" height="100%" class="rounded success-blue p-2"></svg>
