@@ -22,6 +22,7 @@ import Graph from './components/Graph';
 export default function StrudelDemo() {
 
   let globalEditor = useRef(null);
+  const djPadRef = useRef();
   const hasRun = useRef(false);
   const [processText, setProcessText] = useState(stranger_tune);
   const [d3Data, setD3Data] = useState([]);
@@ -45,7 +46,6 @@ export default function StrudelDemo() {
     }
   }
 
-
   function Stop() {
     if (globalEditor.current) {
       globalEditor.current.stop()
@@ -60,21 +60,30 @@ export default function StrudelDemo() {
 
   function SaveJson() {
     if (globalEditor.current) {
-      console.log('save')
+      // Saving what the current code is into local storage.
+      localStorage.setItem("processText", JSON.stringify(globalEditor.current.code));
     }
   }
+  useEffect(() => {
+    const editorRoot = document.getElementById('editor');
+    // if (editorRoot)
+    console.log(editorRoot);
+  })
 
   function LoadJson() {
     if (globalEditor.current) {
-      console.log('load')
+      // Loading the saved data from local storage in.
+      const retrievedData = localStorage.getItem("processText");
+      const parsedData = JSON.parse(retrievedData);
+      setProcessText(parsedData);
     }
   }
 
-  function DeleteJsonData() {
-    if (globalEditor.current) {
-      console.log('delate')
-    }
-  }
+  // const handleCodeChange = (newText) => {
+  //   // parse or derive new data from text
+  //   const updatedData = parseTextToData(newText);
+  //   setData(updatedData);
+  // };
 
   useEffect(() => {
     if (!hasRun.current) {
@@ -108,6 +117,7 @@ export default function StrudelDemo() {
               },
           });
       document.getElementById('proc').value = stranger_tune
+      console.log("testing", globalEditor.current)
     }
     globalEditor.current.setCode(processText);
   }, [processText]);
@@ -127,8 +137,8 @@ export default function StrudelDemo() {
             <div className="container-fluid">
                 <div className="row mb-4">
                     <div className="col-md-7" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                        <div id="editor" />
-                        <div id="output" />
+                        <div id="editor"/>
+                        <div id="output"/>
                     </div>
                     {/* When graph comes in hide this element using the attribute hidden or something else. */}
                     <div className="col-md-5" style={{ maxHeight: '50vh', overflowY: 'auto' }} hidden>
@@ -139,10 +149,10 @@ export default function StrudelDemo() {
                     </div>
                 </div>
                 <div className="row">
-                  <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, SaveJson, LoadJson, DeleteJsonData}}/>
+                  <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, SaveJson, LoadJson}}/>
                 </div>
                 <div className="row">
-                  <DjPad rowGap="2" groupOptions={groupOptions} callBack={ProcEdit}/>
+                  <DjPad rowGap="2" groupOptions={groupOptions} ref={djPadRef} callBack={ProcEdit}/>
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>
