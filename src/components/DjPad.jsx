@@ -9,7 +9,7 @@ import Range from './Range';
 
 function DjPad(props) {
     const [checkBoxList, setCheckBoxList] = useState([])
-
+    // console.log(props.data)
     React.useEffect(() => {
         // Automatically creating the buttons based on the elements in the tune
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
@@ -69,7 +69,7 @@ function DjPad(props) {
                             return (
                                 <Col xs={12} md={6} lg={6}>
                                     <p className="mt-2 mb-1">{option.name}</p>
-                                    <RadioGroup key={option.id} patternOptions={option.values} optionKey={optionKey} callBack={props.callBack}/>
+                                    <RadioGroup key={option.id} patternOptions={option.values} ref={props.radioOption} optionKey={optionKey} callBack={props.callBack}/>
                                 </Col>
                             )
                         })}

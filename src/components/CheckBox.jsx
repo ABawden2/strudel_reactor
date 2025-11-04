@@ -19,6 +19,7 @@ function CheckBox(props) {
       <ToggleButton
         id={props.buttonId}
         type="checkbox"
+        className="instrument-checkbox"
         variant={props.buttonColour}
         checked={checked}
         value={props.buttonValue}

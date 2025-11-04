@@ -20,7 +20,7 @@ function Range(props) {
     <>
       <Row>
         <Col xs={12} md={12} lg={12}>
-          <Form.Label className="m-0">Play Speed: {sliderValue}</Form.Label>
+          <Form.Label className="m-0 slider-text">Play Speed: {sliderValue}</Form.Label>
         </Col>
         <Col xs={12} md={12} lg={12}>
           <input id="sliderId"

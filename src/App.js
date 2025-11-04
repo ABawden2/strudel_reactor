@@ -22,7 +22,6 @@ import Graph from './components/Graph';
 export default function StrudelDemo() {
 
   let globalEditor = useRef(null);
-  const djPadRef = useRef();
   const hasRun = useRef(false);
   const [processText, setProcessText] = useState(stranger_tune);
   const [d3Data, setD3Data] = useState([]);
@@ -64,26 +63,40 @@ export default function StrudelDemo() {
       localStorage.setItem("processText", JSON.stringify(globalEditor.current.code));
     }
   }
-  useEffect(() => {
-    const editorRoot = document.getElementById('editor');
-    // if (editorRoot)
-    console.log(editorRoot);
-  })
 
   function LoadJson() {
     if (globalEditor.current) {
       // Loading the saved data from local storage in.
       const retrievedData = localStorage.getItem("processText");
       const parsedData = JSON.parse(retrievedData);
+
+      // Setting the checkbox values;
+      let instrumentCheckbox = parsedData.match(new RegExp(/^\b\w+:\s/gm));
+      for (let index in instrumentCheckbox) {
+        // console.log("instrument:",instrumentCheckbox[index])
+        let instrument = instrumentCheckbox[index].trim()
+        console.log(instrument, instrument.startsWith("_"))
+        if (instrumentCheckbox[index].startsWith("_")) {
+          // console.log("it includes it")
+          instrument = instrument.replace("_", "");
+          document.querySelector(`input[id="control-${instrument}"]`).checked = true;
+          // console.log(document.querySelector(`input[id="control-${instrument}"]`).checked, document.querySelector(`input[id="control-${instrument}"]`))
+        }
+      }
+      let speedSlider = parsedData.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g));
+      // let optionArpeggiator = parsedData.match(new RegExp(`(${arpeggiatorOption},)`, 'g'));
+      let elements = document.getElementsByClassName("option-radio")
+      
+      console.log(elements)
+      let sliderValue = speedSlider[0].split("(")[1].split("/")[0];
+      document.getElementById('sliderId').value = sliderValue;   
+      document.getElementsByClassName('slider-text')[0].innerHTML = 'Play Speed: ' + sliderValue;
+      
+      document.querySelector('input[id="2arpeggiatorPattern2"]').checked = true;
       setProcessText(parsedData);
+      Proc();
     }
   }
-
-  // const handleCodeChange = (newText) => {
-  //   // parse or derive new data from text
-  //   const updatedData = parseTextToData(newText);
-  //   setData(updatedData);
-  // };
 
   useEffect(() => {
     if (!hasRun.current) {
@@ -117,8 +130,9 @@ export default function StrudelDemo() {
               },
           });
       document.getElementById('proc').value = stranger_tune
-      console.log("testing", globalEditor.current)
+      // console.log("testing", globalEditor.current)
     }
+
     globalEditor.current.setCode(processText);
   }, [processText]);
 
@@ -152,7 +166,7 @@ export default function StrudelDemo() {
                   <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, SaveJson, LoadJson}}/>
                 </div>
                 <div className="row">
-                  <DjPad rowGap="2" groupOptions={groupOptions} ref={djPadRef} callBack={ProcEdit}/>
+                  <DjPad rowGap="2" groupOptions={groupOptions} data={processText} callBack={ProcEdit}/>
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>
