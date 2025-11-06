@@ -41,6 +41,7 @@ export default function StrudelDemo() {
 
   function ProcEdit(currentText, replaceText) {
     if (globalEditor.current) {
+      // Changing the the current text value in process text value to be of the replacement text.
       let proc_text = processText;
       proc_text = proc_text.replace(proc_text.match(currentText), replaceText);
       document.getElementById('proc').value = proc_text;
@@ -62,16 +63,16 @@ export default function StrudelDemo() {
 
   function SaveJson() {
     if (globalEditor.current) {
+      // Displaying the alert if the alert isnt already displayed.
       if (!show) {
         setShow(true)
       }
 
-      // Set a timeout to hide the alert after 15 seconds.
+      // Set a timeout to hide the alert after 2 seconds.
       setTimeout(() => {
         setShow(false)
       }, 2000);
 
-      // alert.classList.remove('d-none'); // Remove 'd-none' to make it visible
       // Saving what the current code is into local storage.
       localStorage.setItem("processText", JSON.stringify(globalEditor.current.code));
     }
@@ -83,31 +84,7 @@ export default function StrudelDemo() {
       const retrievedData = localStorage.getItem("processText");
       const parsedData = JSON.parse(retrievedData);
 
-      // // Setting the checkbox values;
-      // let instrumentCheckbox = parsedData.match(new RegExp(/^\b\w+:\s/gm));
-      // for (let index in instrumentCheckbox) {
-      //   // console.log("instrument:",instrumentCheckbox[index])
-      //   let instrument = instrumentCheckbox[index].trim()
-      //   console.log(instrument, instrument.startsWith("_"))
-      //   if (instrumentCheckbox[index].startsWith("_")) {
-      //     // console.log("it includes it")
-      //     instrument = instrument.replace("_", "");
-      //     document.querySelector(`input[id="control-${instrument}"]`).checked = true;
-      //     // console.log(document.querySelector(`input[id="control-${instrument}"]`).checked, document.querySelector(`input[id="control-${instrument}"]`))
-      //   }
-      // }
-      // let speedSlider = parsedData.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g));
-      // // let optionArpeggiator = parsedData.match(new RegExp(`(${arpeggiatorOption},)`, 'g'));
-      // let elements = document.getElementsByClassName("option-radio")
-      
-      // console.log(elements)
-      // let sliderValue = speedSlider[0].split("(")[1].split("/")[0];
-      // document.getElementById('sliderId').value = sliderValue;   
-      // document.getElementsByClassName('slider-text')[0].innerHTML = 'Play Speed: ' + sliderValue;
-      
-      // document.querySelector('input[id="2arpeggiatorPattern2"]').checked = true;
       setProcessText(parsedData);
-      // Proc();
     }
   }
 
@@ -183,6 +160,7 @@ export default function StrudelDemo() {
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>
+            {/* Creating the alert element. */}
             <Alert show={show} variant="success" style={{ "position": "absolute", "top": 10 + "px", "right": 10 + "px"}}>
               <p className='mb-0'>The song has been saved.</p>
             </Alert>
