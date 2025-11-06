@@ -17,6 +17,8 @@ import groupOptions from './assets/patternOptions.json';
 import ReactLogo from './logo.svg';
 import '../src/assets/controls.css';
 import Graph from './components/Graph';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
 
 
 export default function StrudelDemo() {
@@ -25,16 +27,17 @@ export default function StrudelDemo() {
   const hasRun = useRef(false);
   const [processText, setProcessText] = useState(stranger_tune);
   const [d3Data, setD3Data] = useState([]);
+  const [show, setShow] = useState(false);
  
   function handleD3Data(event) {
     setD3Data(event.detail[event.detail.length - 1]);
   };
 
-  function Proc() {
-    if (globalEditor.current) {
-      globalEditor.current.setCode(processText);
-    }
-  }
+  // function Proc() {
+  //   if (globalEditor.current) {
+  //     globalEditor.current.setCode(processText);
+  //   }
+  // }
 
   function ProcEdit(currentText, replaceText) {
     if (globalEditor.current) {
@@ -59,6 +62,16 @@ export default function StrudelDemo() {
 
   function SaveJson() {
     if (globalEditor.current) {
+      if (!show) {
+        setShow(true)
+      }
+
+      // Set a timeout to hide the alert after 15 seconds.
+      setTimeout(() => {
+        setShow(false)
+      }, 2000);
+
+      // alert.classList.remove('d-none'); // Remove 'd-none' to make it visible
       // Saving what the current code is into local storage.
       localStorage.setItem("processText", JSON.stringify(globalEditor.current.code));
     }
@@ -70,31 +83,31 @@ export default function StrudelDemo() {
       const retrievedData = localStorage.getItem("processText");
       const parsedData = JSON.parse(retrievedData);
 
-      // Setting the checkbox values;
-      let instrumentCheckbox = parsedData.match(new RegExp(/^\b\w+:\s/gm));
-      for (let index in instrumentCheckbox) {
-        // console.log("instrument:",instrumentCheckbox[index])
-        let instrument = instrumentCheckbox[index].trim()
-        console.log(instrument, instrument.startsWith("_"))
-        if (instrumentCheckbox[index].startsWith("_")) {
-          // console.log("it includes it")
-          instrument = instrument.replace("_", "");
-          document.querySelector(`input[id="control-${instrument}"]`).checked = true;
-          // console.log(document.querySelector(`input[id="control-${instrument}"]`).checked, document.querySelector(`input[id="control-${instrument}"]`))
-        }
-      }
-      let speedSlider = parsedData.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g));
-      // let optionArpeggiator = parsedData.match(new RegExp(`(${arpeggiatorOption},)`, 'g'));
-      let elements = document.getElementsByClassName("option-radio")
+      // // Setting the checkbox values;
+      // let instrumentCheckbox = parsedData.match(new RegExp(/^\b\w+:\s/gm));
+      // for (let index in instrumentCheckbox) {
+      //   // console.log("instrument:",instrumentCheckbox[index])
+      //   let instrument = instrumentCheckbox[index].trim()
+      //   console.log(instrument, instrument.startsWith("_"))
+      //   if (instrumentCheckbox[index].startsWith("_")) {
+      //     // console.log("it includes it")
+      //     instrument = instrument.replace("_", "");
+      //     document.querySelector(`input[id="control-${instrument}"]`).checked = true;
+      //     // console.log(document.querySelector(`input[id="control-${instrument}"]`).checked, document.querySelector(`input[id="control-${instrument}"]`))
+      //   }
+      // }
+      // let speedSlider = parsedData.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g));
+      // // let optionArpeggiator = parsedData.match(new RegExp(`(${arpeggiatorOption},)`, 'g'));
+      // let elements = document.getElementsByClassName("option-radio")
       
-      console.log(elements)
-      let sliderValue = speedSlider[0].split("(")[1].split("/")[0];
-      document.getElementById('sliderId').value = sliderValue;   
-      document.getElementsByClassName('slider-text')[0].innerHTML = 'Play Speed: ' + sliderValue;
+      // console.log(elements)
+      // let sliderValue = speedSlider[0].split("(")[1].split("/")[0];
+      // document.getElementById('sliderId').value = sliderValue;   
+      // document.getElementsByClassName('slider-text')[0].innerHTML = 'Play Speed: ' + sliderValue;
       
-      document.querySelector('input[id="2arpeggiatorPattern2"]').checked = true;
+      // document.querySelector('input[id="2arpeggiatorPattern2"]').checked = true;
       setProcessText(parsedData);
-      Proc();
+      // Proc();
     }
   }
 
@@ -170,6 +183,9 @@ export default function StrudelDemo() {
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>
+            <Alert show={show} variant="success" style={{ "position": "absolute", "top": 10 + "px", "right": 10 + "px"}}>
+              <p className='mb-0'>The song has been saved.</p>
+            </Alert>
         </main>
     </div>
   );
