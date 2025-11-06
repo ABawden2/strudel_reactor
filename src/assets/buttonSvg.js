@@ -1,3 +1,4 @@
+// Holds the bootstrap svgs for the nav bar buttons
 const icons = {
   play: (
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">

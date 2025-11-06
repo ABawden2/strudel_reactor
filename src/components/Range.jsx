@@ -7,10 +7,12 @@ function Range(props) {
     const [sliderValue, setSliderValue] = useState(100);
 
 
+    // Calls the callback method to change the value on the Strudel editor.
     useEffect(() => {
         props.callBack(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g), `setcps(${sliderValue}/60/4)`)
     }, [sliderValue]);
     
+    // When the slider changes, set the new value.
     const handleSliderChange = (e) => {
         let newSliderValue = e.target.value;
         setSliderValue(newSliderValue);

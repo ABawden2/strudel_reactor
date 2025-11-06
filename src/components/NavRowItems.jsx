@@ -1,9 +1,11 @@
 import ButtonCreator from './ButtonCreator';
 import Row from 'react-bootstrap/Row';
 
+// Creates the nav bar buttons using the passed in data.
 function NavRowItems (props) {
     return (
         <Row className={'g-' + props.rowGap + " " + props.navButtoncontrols[0].margin}>
+            {/* Creates a button to add to the nav for each button object passed in. */}
             {Object.values(props.navButtoncontrols).map((button) => {
                 return (
                 <ButtonCreator

@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavRowItems from './NavRowItems';
 import Stack from 'react-bootstrap/Stack';
 
+// Creates the nav bar and nav items using the passed in data.
 function NavBar (props) {
     return (
         <Navbar>

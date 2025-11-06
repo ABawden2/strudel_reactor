@@ -3,6 +3,7 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 import Col from 'react-bootstrap/Col';
 import '../assets/button.css';
 
+// Creating checkbox buttons using data passed in.
 function CheckBox(props) {
   const [checked, setChecked] = useState(false);
 

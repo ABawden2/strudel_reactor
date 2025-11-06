@@ -4,6 +4,8 @@ import '../assets/button.css';
 import '../assets/controls.css';
 import icons from '../assets/buttonSvg';
 
+// Creates a button of any type based on the values entered. 
+// Used to create the nav bar buttons.
 function ButtonCreator (props) {
     return (
         <Col xs={12} md={props.buttonCols} lg={props.buttonCols}>

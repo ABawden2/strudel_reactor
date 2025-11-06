@@ -3,6 +3,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { ToggleButton } from 'react-bootstrap';
 import "../assets/controls.css";
 
+// Creates a radio button group based on the data passed in.
 function RadioGroup(props) {
     const [radioValue, setRadioValue] = useState('0');
     const [oldValue, setPreviousValue] = useState('0');
@@ -29,6 +30,7 @@ function RadioGroup(props) {
 
   return (
     <ButtonGroup style={{"width": 100 + "%"}} className="option-radio">
+        {/* Create a button in the button group for each data passed in. */}
         {Object.values(props.patternOptions).map((pattern) => {
             return (
                 <ToggleButton

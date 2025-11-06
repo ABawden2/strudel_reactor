@@ -1,3 +1,4 @@
+// Creates the text area that is used to pull data from.
 function ProcessTextarea({defaultValue, onChange}) {
     return (
         <>

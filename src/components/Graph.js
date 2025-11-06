@@ -6,7 +6,7 @@ export default function Graph(props) {
     const [rngNumber, setRngNumber] = useState(0);
     const [rngArray, setRngArray] = useState([]);
     const maxItems = 50;
-    const timeOut = 100;
+    // const timeOut = 100;
     const maxValue = 0.7; // Pretending to be gain so its normally between 0 and 1
 
     // Everytime the D3 data is changed reset the number.
@@ -14,7 +14,8 @@ export default function Graph(props) {
             setRngNumber(props.value);
     }, [props.value]);
 
-    // Is this the "proper" way to do it?
+    // Changes the log value to a number.
+    // TODO: maybe change.
     const LogToNum = (input) => {
         let number = 0;
         if (!input || input.length === 0) { return 0 };

@@ -6,15 +6,16 @@ import CheckBox from './CheckBox';
 import RadioGroup from './RadioGroup';
 import Range from './Range';
 
-
+// Creates the dj pad with the different button elements specified in the passed in data.
 function DjPad(props) {
     const [checkBoxList, setCheckBoxList] = useState([])
-    // console.log(props.data)
+
     React.useEffect(() => {
         // Automatically creating the buttons based on the elements in the tune
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
         let transformedElements = [];
         // Randomly selecting the colours.
+        // TODO: change name of colours to match the actual colours.
         let colours = ['purple', 'orange', 'pink', 'green']
         // TODO: look into this as it shouldn't need this as it should only be entering this useEffect once.
         if (matchedElements) {
@@ -40,6 +41,7 @@ function DjPad(props) {
     <div className="col-md-5">
         <Container className='highlight-container'>
             <Row className={'g-' + props.rowGap}>
+                {/* Creates the checkbox values. */}
                 {Object.values(checkBoxList).map((button) => {
                     return (
                     <CheckBox
@@ -64,6 +66,7 @@ function DjPad(props) {
                 </Col>
                 <Col xs={12} md={12} lg={12}>
                     <Row>
+                        {/* Creates each different radio group values. */}
                         {Object.values(props.groupOptions).map((option, index) => {
                             let optionKey = Object.keys(props.groupOptions)[index];
                             return (
