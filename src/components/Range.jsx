@@ -20,7 +20,6 @@ function Range(props) {
 
     useImperativeHandle(props.ref, () => ({
       handleDataChange(data) {
-        console.log(data.sliderValue);
         setSliderValue(data.sliderValue);
       }
     }), []);

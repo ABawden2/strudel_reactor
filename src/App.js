@@ -94,10 +94,10 @@ export default function StrudelDemo() {
     // Retreving the requried data from the porcesses text.
     let data = {
       sliderValue: processText.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g))[0].split("(")[1].split("/")[0],
-      patternValue: processText.match(new RegExp(/pattern =\s*(\d+)/))[1],
-      bassValue: processText.match(new RegExp(/bass =\s*(\d+)/))[1],
-      drumValue: processText.match(new RegExp(/drumPattern =\s*(\d+)/))[1],
-      arpeggiatorValue: processText.match(new RegExp(/\(arpeggiator*(\d+)/))[1]
+      patternOptions: processText.match(new RegExp(/pattern =\s*(\d+)/))[1],
+      bassOptions: processText.match(new RegExp(/bass =\s*(\d+)/))[1],
+      drumOptions: processText.match(new RegExp(/drumPattern =\s*(\d+)/))[1],
+      arpeggiatorOptions: processText.match(new RegExp(/\(arpeggiator*(\d+)/))[1]
     }
 
     // Dynamically getting the checkbox instrument values.
@@ -105,7 +105,7 @@ export default function StrudelDemo() {
     for (let index in instrumentCheckbox) {
       let instrument = instrumentCheckbox[index].trim()
       let instrumentName = instrument.startsWith("_") ? instrument.replace("_", "") : instrument;
-      data[instrumentName.replace(":", "")] = instrument;
+      data[instrumentName] = instrument;
     }
     return data;
   }
@@ -145,7 +145,6 @@ export default function StrudelDemo() {
     }
 
     djPadRef.current?.handleDataChange(getDjPadValues());
-    console.log("erhe", djPadRef)
     globalEditor.current.setCode(processText);
   }, [processText]);
 

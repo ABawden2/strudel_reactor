@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useImperativeHandle } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { ToggleButton } from 'react-bootstrap';
 import "../assets/controls.css";
@@ -8,7 +8,7 @@ function RadioGroup(props) {
     const [radioValue, setRadioValue] = useState('0');
     const [oldValue, setPreviousValue] = useState('0');
     const groupKey = props.optionKey;
-
+    
     function setRadioButton(value) {
         // Check is the value has changed.
         if (radioValue !== value) {
@@ -16,6 +16,14 @@ function RadioGroup(props) {
             setRadioValue(value);
         }
     }
+
+    useImperativeHandle(props.ref, () => ({
+        handleDataChange(data) {
+            setRadioValue(data[Object.keys(props)[0]])
+            // data[props.buttonName].startsWith("_") ? setChecked(true) : setChecked(false);
+            // console.log(data[Object.keys(props)[0]], data, Object.keys(props)[0],  "here now radio");
+        }
+    }), []);
     
     useEffect(() => {
         // Depending on the group pass in different information into the callback method.
