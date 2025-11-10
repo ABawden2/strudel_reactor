@@ -18,7 +18,6 @@ import ReactLogo from './logo.svg';
 import '../src/assets/controls.css';
 import Graph from './components/Graph';
 import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
 
 
 export default function StrudelDemo() {
@@ -28,6 +27,7 @@ export default function StrudelDemo() {
   const [processText, setProcessText] = useState(stranger_tune);
   const [d3Data, setD3Data] = useState([]);
   const [show, setShow] = useState(false);
+  const djPadRef = useRef();
  
   function handleD3Data(event) {
     setD3Data(event.detail[event.detail.length - 1]);
@@ -55,6 +55,7 @@ export default function StrudelDemo() {
     }
   }
 
+  // do like a proc and play thing
   function Start() {
     if (globalEditor.current) {
       globalEditor.current.evaluate()
@@ -86,6 +87,27 @@ export default function StrudelDemo() {
 
       setProcessText(parsedData);
     }
+  }
+
+
+  function getDjPadValues() {
+    // Retreving the requried data from the porcesses text.
+    let data = {
+      sliderValue: processText.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g))[0].split("(")[1].split("/")[0],
+      patternValue: processText.match(new RegExp(/pattern =\s*(\d+)/))[1],
+      bassValue: processText.match(new RegExp(/bass =\s*(\d+)/))[1],
+      drumValue: processText.match(new RegExp(/drumPattern =\s*(\d+)/))[1],
+      arpeggiatorValue: processText.match(new RegExp(/\(arpeggiator*(\d+)/))[1]
+    }
+
+    // Dynamically getting the checkbox instrument values.
+    let instrumentCheckbox = processText.match(new RegExp(/^\b\w+:\s/gm));
+    for (let index in instrumentCheckbox) {
+      let instrument = instrumentCheckbox[index].trim()
+      let instrumentName = instrument.startsWith("_") ? instrument.replace("_", "") : instrument;
+      data[instrumentName.replace(":", "")] = instrument;
+    }
+    return data;
   }
 
   useEffect(() => {
@@ -120,9 +142,10 @@ export default function StrudelDemo() {
               },
           });
       document.getElementById('proc').value = stranger_tune
-      // console.log("testing", globalEditor.current)
     }
 
+    djPadRef.current?.handleDataChange(getDjPadValues());
+    console.log("erhe", djPadRef)
     globalEditor.current.setCode(processText);
   }, [processText]);
 
@@ -156,7 +179,7 @@ export default function StrudelDemo() {
                   <NavBar rowGap="3" buttonList={buttonList} functions={{Start, Stop, SaveJson, LoadJson}}/>
                 </div>
                 <div className="row">
-                  <DjPad rowGap="2" groupOptions={groupOptions} data={processText} callBack={ProcEdit}/>
+                  <DjPad rowGap="2" groupOptions={groupOptions} data={processText} ref={djPadRef} callBack={ProcEdit}/>
                 </div>
             </div>
             <canvas id="roll" hidden></canvas>

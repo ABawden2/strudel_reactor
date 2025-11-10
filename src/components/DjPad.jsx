@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,6 +9,14 @@ import Range from './Range';
 // Creates the dj pad with the different button elements specified in the passed in data.
 function DjPad(props) {
     const [checkBoxList, setCheckBoxList] = useState([])
+    const rangeRef = useRef();
+    console.log("ref", props.ref)
+    useImperativeHandle(props.ref, () => ({
+        handleDataChange(data) {
+            console.log("here")
+            rangeRef.current?.handleDataChange(data);
+        }
+    }), []);
 
     React.useEffect(() => {
         // Automatically creating the buttons based on the elements in the tune
@@ -62,7 +70,7 @@ function DjPad(props) {
         <Container className='highlight-container'>
             <Row>
                 <Col xs={12} md={12} lg={12} className='mb-0'>
-                    <Range key={'range'} callBack={props.callBack}/>
+                    <Range key={'range'} callBack={props.callBack} ref={rangeRef}/>
                 </Col>
                 <Col xs={12} md={12} lg={12}>
                     <Row>

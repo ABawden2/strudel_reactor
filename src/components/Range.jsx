@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useImperativeHandle } from 'react';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -17,6 +17,13 @@ function Range(props) {
         let newSliderValue = e.target.value;
         setSliderValue(newSliderValue);
     };
+
+    useImperativeHandle(props.ref, () => ({
+      handleDataChange(data) {
+        console.log(data.sliderValue);
+        setSliderValue(data.sliderValue);
+      }
+    }), []);
 
   return (
     <>
