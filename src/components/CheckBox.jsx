@@ -17,7 +17,7 @@ function CheckBox(props) {
   useImperativeHandle(props.ref, () => ({
     handleDataChange(data) {
       data[props.buttonName].startsWith("_") ? setChecked(true) : setChecked(false);
-      console.log(data[props.buttonName],  "here now");
+      // console.log(data[props.buttonName],  "here now");
     }
   }), []);
 

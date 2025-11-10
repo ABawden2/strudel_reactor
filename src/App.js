@@ -94,10 +94,10 @@ export default function StrudelDemo() {
     // Retreving the requried data from the porcesses text.
     let data = {
       sliderValue: processText.match(new RegExp(/setcps\([0-9]{1,}\/60\/4\)/g))[0].split("(")[1].split("/")[0],
-      patternOptions: processText.match(new RegExp(/pattern =\s*(\d+)/))[1],
-      bassOptions: processText.match(new RegExp(/bass =\s*(\d+)/))[1],
-      drumOptions: processText.match(new RegExp(/drumPattern =\s*(\d+)/))[1],
-      arpeggiatorOptions: processText.match(new RegExp(/\(arpeggiator*(\d+)/))[1]
+      pattern: processText.match(new RegExp(/pattern =\s*(\d+)/))[1],
+      bass: processText.match(new RegExp(/bass =\s*(\d+)/))[1],
+      drumPattern: processText.match(new RegExp(/drumPattern =\s*(\d+)/))[1],
+      arpeggiatorPattern: processText.match(new RegExp(/\(arpeggiator*(\d+)/))[1]
     }
 
     // Dynamically getting the checkbox instrument values.

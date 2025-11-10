@@ -15,16 +15,13 @@ function DjPad(props) {
     const checkbox = useRef([]);
     const radioRef = useRef([]);
 
-    console.log("ref", props.ref)
+    // console.log("ref", props.ref)
     useImperativeHandle(props.ref, () => ({
         handleDataChange(data) {
             rangeRef.current?.handleDataChange(data);
-            console.log(checkbox.current, rangeRef.current)
+            // console.log(checkbox.current, rangeRef.current)
             checkbox.current.forEach((checkboxRef) => checkboxRef?.handleDataChange(data));
             radioRef.current.forEach((radio) => radio?.handleDataChange(data));
-
-            // checkbox.current?.handleDataChange(data);
-            // radioRef.current?.handleDataChange(data);
         }
     }), []);
 
@@ -91,7 +88,7 @@ function DjPad(props) {
                             return (
                                 <Col xs={12} md={6} lg={6}>
                                     <p className="mt-2 mb-1">{option.name}</p>
-                                    <RadioGroup key={option.id} patternOptions={option.values} ref={(el) => (radioRef.current[index] = el)} optionKey={optionKey} callBack={props.callBack}/>
+                                    <RadioGroup key={option.id} patternOptions={option.values} ref={(el) => ( radioRef.current[index] = el) } optionKey={optionKey} callBack={props.callBack}/>
                                 </Col>
                             )
                         })}

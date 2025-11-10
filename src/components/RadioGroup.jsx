@@ -19,7 +19,8 @@ function RadioGroup(props) {
 
     useImperativeHandle(props.ref, () => ({
         handleDataChange(data) {
-            setRadioValue(data[Object.keys(props)[0]])
+            console.log("testing in heree", props.optionKey, data)
+            setRadioValue(data[props.optionKey])
             // data[props.buttonName].startsWith("_") ? setChecked(true) : setChecked(false);
             // console.log(data[Object.keys(props)[0]], data, Object.keys(props)[0],  "here now radio");
         }
