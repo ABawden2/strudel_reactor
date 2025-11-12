@@ -15,7 +15,6 @@ export default function Graph(props) {
     }, [props.value]);
 
     // Changes the log value to a number.
-    // TODO: maybe change.
     const LogToNum = (input) => {
         let number = 0;
         if (!input || input.length === 0) { return 0 };

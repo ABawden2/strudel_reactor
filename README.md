@@ -69,8 +69,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## Code Features
+### Control Functionality
+<b>Check Boxs</b><br>
+The checkbox are used to mute and unmute the listed elements. To mute the element an underscore ( _ ) is added infront of the instruments contrustor.
 
-Sources used:
+<b>Slider</b><br>
+The slider is used the change the speed of the song by altering the first value of the setcps element.
+
+<b>Radio Buttons</b><br>
+The radio buttons alter the selected option based on the radio. Each option has different tracks that can be used, resulting in the song sounding different. By selecting the different number options the different track is attached to the instruments, making the song different.
+
+<b>Buttons</b>
+<li>Play: Starts playing the song and it it makes the graph display values.</li>
+<li>Pause: Stops the song from playing.</li>
+<li>Save: Saves the current song track to local storage.</li>
+<li>Load: Loads the saved song from local storage into the page, and automatically changes the button values to match the saved songs button values.</li>
+
+
+<br><b>Alert</b><br>
+An alert is used to inform the user that they track they have made has been saved to local storage. This provides them with feedback infroming them that the element has worked correctly, otherwise they would not know if the song had actually been saved.
+
+<br><b>Graph</b><br>
+The graph display the room value for all the elements and shows how it changes as the song is played.
+
+### Project Quirks
+The buttons automatically update their value when you load in a saved file, or you manually select and change the button. They do not change however when you manually override the value in the code window.
+
+## Sources used:
 The section where I used useImperativeHandle, I got my understanding from both these sources:
 [https://react.dev/reference/react/useImperativeHandle]
 [https://stackoverflow.com/questions/37949981/call-child-method-from-parent]
