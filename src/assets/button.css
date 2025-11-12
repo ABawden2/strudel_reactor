@@ -1,6 +1,6 @@
 
 /* #a100c9  */
-.btn-outline-pink {
+.btn-outline-green {
     --bs-btn-color: #1fab12 !important;
     --bs-btn-border-color: #1fab12 !important;
     --bs-btn-hover-color: #000 !important;
@@ -19,9 +19,9 @@
 }
 
 /* Force gradient on active state */
-.btn-outline-pink:active,
-.btn-outline-pink.active,
-.btn-outline-pink:hover {
+.btn-outline-green:active,
+.btn-outline-green.active,
+.btn-outline-green:hover {
     background-image: linear-gradient(to bottom right, #1fab12, #127709) !important;
     color: black !important;
 }
@@ -72,7 +72,7 @@
 }
 
 /* rgb(242, 120, 13) */
-.btn-outline-purple {
+.btn-outline-red {
     --bs-btn-color:  rgb(218 18 18 / 90%)  !important;
     --bs-btn-border-color: rgb(218 18 18 / 90%) !important;
     --bs-btn-hover-color: #000 !important;
@@ -90,14 +90,14 @@
     box-shadow: 0 1px 2px 0 rgb(218 18 18 / 90%), 0 1px 2px 0 rgba(170, 10, 10, 0.9) !important;
 }
 /* Force gradient on active state */
-.btn-outline-purple:active,
-.btn-outline-purple.active,
-.btn-outline-purple:hover {
+.btn-outline-red:active,
+.btn-outline-red.active,
+.btn-outline-red:hover {
     background-image: linear-gradient(to bottom right, rgb(218 18 18 / 90%), rgba(152, 9, 9, 0.9)) !important;
     color: black !important;
 }
 
-.btn-outline-green {
+.btn-outline-blue {
     --bs-btn-color: #0a88c2 !important;
     --bs-btn-border-color: #0a88c2 !important;
     --bs-btn-hover-color: #000 !important;
@@ -115,9 +115,9 @@
     box-shadow: 0 1px 2px 0 #0a88c2, 0 1px 2px 0 #05618b !important;
 }
 /* Force gradient on active state */
-.btn-outline-green:active,
-.btn-outline-green.active,
-.btn-outline-green:hover {
+.btn-outline-blue:active,
+.btn-outline-blue.active,
+.btn-outline-blue:hover {
     background-image: linear-gradient(to bottom right, #0a88c2, #054c6d) !important;
     color: black !important;
 }

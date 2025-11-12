@@ -17,12 +17,11 @@ function RadioGroup(props) {
         }
     }
 
+    // Method that is accessable from the app and Djpad method to set the radio value.
     useImperativeHandle(props.ref, () => ({
         handleDataChange(data) {
             console.log("testing in heree", props.optionKey, data)
             setRadioValue(data[props.optionKey])
-            // data[props.buttonName].startsWith("_") ? setChecked(true) : setChecked(false);
-            // console.log(data[Object.keys(props)[0]], data, Object.keys(props)[0],  "here now radio");
         }
     }), []);
     

@@ -15,11 +15,12 @@ function DjPad(props) {
     const checkbox = useRef([]);
     const radioRef = useRef([]);
 
-    // console.log("ref", props.ref)
+    // Source used to implement this:
+    // https://react.dev/reference/react/useImperativeHandle and https://stackoverflow.com/questions/37949981/call-child-method-from-parent
     useImperativeHandle(props.ref, () => ({
         handleDataChange(data) {
+            // Calls methods to change the value of the buttons and slider.
             rangeRef.current?.handleDataChange(data);
-            // console.log(checkbox.current, rangeRef.current)
             checkbox.current.forEach((checkboxRef) => checkboxRef?.handleDataChange(data));
             radioRef.current.forEach((radio) => radio?.handleDataChange(data));
         }
@@ -30,9 +31,8 @@ function DjPad(props) {
         let matchedElements = document.getElementById('proc').value.match(new RegExp(/^\b\w+:\s/gm));
         let transformedElements = [];
         // Randomly selecting the colours.
-        // TODO: change name of colours to match the actual colours.
-        let colours = ['purple', 'orange', 'pink', 'green']
-        // TODO: look into this as it shouldn't need this as it should only be entering this useEffect once.
+        let colours = ['red', 'orange', 'green', 'blue']
+        // Dynamically creating the elements based on the button values found.
         if (matchedElements) {
             matchedElements.forEach((element, index) => {
             element = element.trim().replace('\n', '');

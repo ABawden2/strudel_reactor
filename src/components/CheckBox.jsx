@@ -14,10 +14,10 @@ function CheckBox(props) {
     props.callBack(key, value);
   }, [checked]);
 
+  // Method that is accessable from the app and Djpad method to set the check state.
   useImperativeHandle(props.ref, () => ({
     handleDataChange(data) {
       data[props.buttonName].startsWith("_") ? setChecked(true) : setChecked(false);
-      // console.log(data[props.buttonName],  "here now");
     }
   }), []);
 

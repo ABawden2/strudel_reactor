@@ -27,17 +27,14 @@ export default function StrudelDemo() {
   const [processText, setProcessText] = useState(stranger_tune);
   const [d3Data, setD3Data] = useState([]);
   const [show, setShow] = useState(false);
+
+  // Set refereance to call child component methods when the data is loaded.
   const djPadRef = useRef();
  
   function handleD3Data(event) {
     setD3Data(event.detail[event.detail.length - 1]);
   };
 
-  // function Proc() {
-  //   if (globalEditor.current) {
-  //     globalEditor.current.setCode(processText);
-  //   }
-  // }
 
   function ProcEdit(currentText, replaceText) {
     if (globalEditor.current) {
@@ -58,7 +55,8 @@ export default function StrudelDemo() {
   // do like a proc and play thing
   function Start() {
     if (globalEditor.current) {
-      globalEditor.current.evaluate()
+      setProcessText(document.getElementById('proc').value);
+      globalEditor.current.evaluate();
     }
   }
 
@@ -144,6 +142,7 @@ export default function StrudelDemo() {
       document.getElementById('proc').value = stranger_tune
     }
 
+    // Call the child methods when the text is changed, to update the values.
     djPadRef.current?.handleDataChange(getDjPadValues());
     globalEditor.current.setCode(processText);
   }, [processText]);
