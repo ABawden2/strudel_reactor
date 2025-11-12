@@ -18,6 +18,7 @@ function Range(props) {
         setSliderValue(newSliderValue);
     };
 
+    // Method that is accessable from the app and Djpad method to set the slider value.
     useImperativeHandle(props.ref, () => ({
       handleDataChange(data) {
         setSliderValue(data.sliderValue);

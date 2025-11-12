@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+Sources used:
+The section where I used useImperativeHandle, I got my understanding from both these sources:
+[https://react.dev/reference/react/useImperativeHandle]
+[https://stackoverflow.com/questions/37949981/call-child-method-from-parent]
+
+To understand how to use multiple element/ components in the one useref i used this link:
+[https://www.dhiwise.com/blog/design-converter/react-multiple-refs-manage-refs-in-components-easily]
