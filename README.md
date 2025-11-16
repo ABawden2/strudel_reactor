@@ -1,100 +1,78 @@
-# Getting Started with Create React App
+# INFT 2064 Web Tech - React Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This assignement was about creating a react-based front-end application that using Strudel.cc to create live music coding.
 
-## Available Scripts
+## Run Locally
 
-In the project directory, you can run:
+Clone the project
 
-### `npm start`
+```bash
+  git clone https://github.com/ABawden2/strudel_reactor
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Go to the project directory
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+  cd strudel_reactor
+```
 
-### `npm test`
+Install dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  npm install
+```
 
-### `npm run build`
+Start the server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Control Functionality
+![Code controls image](controls1.png)
 
-### `npm run eject`
+![Code of alert and graph](controls2.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**1. Nav Bar Buttons**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Play: Starts playing the song and it it makes the graph display values.
+* Pause: Stops the song from playing.
+* Save: Saves the current song track to local storage.
+* Load: Loads the saved song from local storage into the page, and automatically changes the button values to match the saved songs button values.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**2. Check Boxs**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-## Code Features
-### Control Functionality
-<b>Check Boxs</b><br>
 The checkbox are used to mute and unmute the listed elements. To mute the element an underscore ( _ ) is added infront of the instruments contrustor.
 
-<b>Slider</b><br>
+**3. Slider**
+
 The slider is used the change the speed of the song by altering the first value of the setcps element.
 
-<b>Radio Buttons</b><br>
+**4. Radio Buttons**
+
 The radio buttons alter the selected option based on the radio. Each option has different tracks that can be used, resulting in the song sounding different. By selecting the different number options the different track is attached to the instruments, making the song different.
 
-<b>Buttons</b>
-<li>Play: Starts playing the song and it it makes the graph display values.</li>
-<li>Pause: Stops the song from playing.</li>
-<li>Save: Saves the current song track to local storage.</li>
-<li>Load: Loads the saved song from local storage into the page, and automatically changes the button values to match the saved songs button values.</li>
 
+**5. Alert**
 
-<br><b>Alert</b><br>
 An alert is used to inform the user that they track they have made has been saved to local storage. This provides them with feedback infroming them that the element has worked correctly, otherwise they would not know if the song had actually been saved.
 
-<br><b>Graph</b><br>
+
+**6. Graph**
+
 The graph display the room value for all the elements and shows how it changes as the song is played.
 
-### Project Quirks
+
+## Project Quirks
 The buttons automatically update their value when you load in a saved file, or you manually select and change the button. They do not change however when you manually override the value in the code window.
+
+Only one song can be saved at one time. When the song is saved is overrides the current local storage item.
+
+
+## Video Link:
+[https://mymailunisaedu-my.sharepoint.com/:v:/g/personal/baway008_mymail_unisa_edu_au/IQD15FWo11dpS6CsBQk3QFFeAeMUCERvJiyA-IT15t2385s?e=8HuTpa]
+
 
 ## Sources used:
 The section where I used useImperativeHandle, I got my understanding from both these sources:
